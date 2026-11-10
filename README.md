@@ -3,7 +3,9 @@
 Vídeo vertical (1080x1920, 30 fps, ~49 s) em estilo motion graphics, montado a partir da locução
 `motion/assets/voz.mp3`, com a identidade da Vora Agency.
 
-**Resultado:** `output/vora-motion.mp4`
+**Resultados:**
+- `output/vora-motion.mp4` — vídeo 1 (locução `voz.mp3`, ~49 s)
+- `output/vora-motion-2.mp4` — vídeo 2 (locução `voz2.mp3`, ~53 s; animação em `motion/v2.html`, sons em `motion/sfx2.py`)
 
 ## Como foi feito
 
@@ -26,3 +28,12 @@ ffmpeg -i ../output/silent.mp4 -i ../output/mix.wav -c:v copy -c:a aac -b:a 192k
 ```
 
 Pré-visualizar quadros: `node render.js stills 2.5 12.9 43.8` (salva PNGs em `motion/stills/`).
+
+Vídeo 2:
+
+```bash
+cd motion
+PAGE=v2.html DURATION=53.4 node render.js video ../output/silent2.mp4 4
+python3 sfx2.py assets/voz2.mp3 ../output/mix2.wav
+ffmpeg -i ../output/silent2.mp4 -i ../output/mix2.wav -c:v libx264 -crf 23 -tune grain -c:a aac -b:a 192k -shortest ../output/vora-motion-2.mp4
+```

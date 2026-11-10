@@ -2,6 +2,7 @@
 // Usage:
 //   node render.js stills 1.5 6 12        -> PNG stills in ./stills
 //   node render.js video out.mp4 [workers] -> silent H.264 video (30 fps, 1080x1920)
+// Env: PAGE=v2.html DURATION=53.4 to render the second video.
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -10,8 +11,9 @@ const { chromium } = require('playwright');
 
 const ROOT = __dirname;
 const FPS = 30;
-const DURATION = 49.4;
-const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.woff2': 'font/woff2', '.mp3': 'audio/mpeg' };
+const PAGE = process.env.PAGE || 'index.html';
+const DURATION = parseFloat(process.env.DURATION || '49.4');
+const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.png': 'image/png', '.woff2': 'font/woff2', '.mp3': 'audio/mpeg' };
 
 function serve() {
   return new Promise(res => {
@@ -27,7 +29,7 @@ function serve() {
 async function openPage(browser, port) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
-  await page.goto(`http://127.0.0.1:${port}/index.html`);
+  await page.goto(`http://127.0.0.1:${port}/${PAGE}`);
   await page.evaluate(() => window.setup());
   await page.waitForTimeout(300);
   return page;

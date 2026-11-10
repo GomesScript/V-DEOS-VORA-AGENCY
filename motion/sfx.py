@@ -153,7 +153,7 @@ def reverb(sig, secs=1.1, wet=0.25):
 
 
 # ---------------------------------------------------------------- music bed
-def music():
+def music(active=((3.3, 38.9), (42.28, 48.2)), arp_on=(10.5, 48.5)):
     n = int(DUR * SR)
     t = np.arange(n) / SR
     bpm = 100
@@ -202,8 +202,7 @@ def music():
     hat = hp(rng.standard_normal(int(0.05 * SR)), 7000) * np.exp(-np.arange(int(0.05 * SR)) / SR * 90) * 0.18
     for k in range(int(DUR / beat)):
         bt = k * beat
-        active = (3.3 <= bt < 38.9) or (42.28 <= bt < 48.2)
-        if not active:
+        if not any(a <= bt < b for a, b in active):
             continue
         j = int(bt * SR)
         L = min(len(kick), n - j)
@@ -212,7 +211,7 @@ def music():
         if jh < n:
             L = min(len(hat), n - jh)
             drums[jh:jh + L] += hat[:L]
-    arp_gate = np.where((t > 10.5) & (t < 48.5), 1.0, 0.25)
+    arp_gate = np.where((t > arp_on[0]) & (t < arp_on[1]), 1.0, 0.25)
     mix = pad * 0.9 + bass * 0.35 + arp * arp_gate + drums
     mix *= np.minimum(1, t / 1.2) * np.minimum(1, np.maximum(0, (DUR - t) / 1.5))
     return reverb(mix, 1.6, 0.25)
@@ -319,10 +318,10 @@ def load_voice(path):
     return out
 
 
-def main():
+def main(build=None, music_kw=None):
     voice = load_voice(sys.argv[1])
-    mus = music()
-    fx = build_sfx()
+    mus = music(**(music_kw or {}))
+    fx = (build or build_sfx)()
     # sidechain duck music under the voice
     env = np.abs(voice)
     k = int(0.15 * SR)
