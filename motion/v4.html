@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Depoimento Maria (estático)</title>
+<title>Depoimento Dra. Paulla</title>
 <style>
 @font-face{font-family:Inter;font-weight:400;src:url(assets/fonts/inter-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:Inter;font-weight:500;src:url(assets/fonts/inter-latin-500-normal.woff2) format('woff2')}
@@ -43,10 +43,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#fbfaf8;font-fam
   </div>
 
   <!-- name -->
-  <div class="c serif" id="name" style="left:540px;top:1200px;font-size:96px;line-height:1">Maria</div>
+  <div class="c serif" id="name" style="left:540px;top:1200px;font-size:88px;line-height:1;white-space:nowrap">Dra. Paulla Samara</div>
   <div class="c" id="sub" style="left:540px;top:1275px;display:flex;align-items:center;gap:18px;white-space:nowrap">
-    <span class="mono" style="font-size:22px;letter-spacing:6px;color:#9a8f86">PACIENTE</span>
-    <span style="color:#e0a43a;font-size:28px;letter-spacing:4px">★★★★★</span>
+    <span class="mono" style="font-size:22px;letter-spacing:6px;color:#9a8f86">DOUTORA</span>
   </div>
 
   <!-- audio player -->
@@ -56,7 +55,8 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#fbfaf8;font-fam
       <svg id="icPause" width="44" height="44" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
     </div>
     <div style="flex:1">
-      <div id="wave" style="height:84px;display:flex;align-items:center;gap:4px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:24px;font-weight:600">Paciente Maria</span><span style="color:#e0a43a;font-size:22px;letter-spacing:3px">★★★★★</span></div>
+      <div id="wave" style="height:60px;display:flex;align-items:center;gap:4px"></div>
       <div style="display:flex;justify-content:space-between;margin-top:6px" class="mono"><span id="tNow" style="font-size:22px;color:#9a8f86">0:00</span><span id="tDur" style="font-size:22px;color:#9a8f86">0:43</span></div>
     </div>
   </div>
@@ -80,7 +80,7 @@ const SPEC=[['Oi, Paula,','eu tô bem,'],['sentindo só um pouco de','desconfort
 const T0=0.8; // audio starts after a short fade-in
 function build(){let wi=0;CH=SPEC.map(([l,e])=>{const lw=l?l.split(' '):[],ew=e.split(' ');const ws=[...lw.map(x=>({w:x,e:0})),...ew.map(x=>({w:x,e:1}))].map(o=>({...o,s:W[wi++].s+T0}));
   return {ws,t0:ws[0].s-.15,e:ws[ws.length-1].s+.6};});CH.forEach((c,i)=>{const n=CH[i+1];c.t1=n?Math.min(n.t0-.02,c.e+1.6):c.e+1.6;});
-  const wv=$('wave');wv.innerHTML=A.bars.map(b=>`<div style="flex:1;height:${Math.round(b*84)}px;border-radius:3px;background:#e6ddd4"></div>`).join('');}
+  const wv=$('wave');wv.innerHTML=A.bars.map(b=>`<div style="flex:1;height:${Math.round(b*60)}px;border-radius:3px;background:#e6ddd4"></div>`).join('');}
 let cur=-1;
 function caps(t){const i=CH.findIndex(c=>t>=c.t0&&t<c.t1);const cap=$('cap');if(i<0){cap.style.opacity=0;return}
   const c=CH[i];if(i!==cur){cur=i;cap.innerHTML=c.ws.map(w=>`<span class="w${w.e?' e':''}">${w.w} </span>`).join('');}
