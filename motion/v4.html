@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Depoimento Maria (estático)</title>
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(assets/fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:500;src:url(assets/fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:600;src:url(assets/fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Serif;font-style:italic;src:url(assets/fonts/instrument-serif-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:Mono;src:url(assets/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#fbfaf8;font-family:Inter,sans-serif;color:#1d1a17}
+#stage{position:absolute;inset:0;overflow:hidden;background:#fbfaf8}
+.c{position:absolute;transform:translate(-50%,-50%)}
+.mono{font-family:Mono,monospace;text-transform:uppercase}
+.serif{font-family:Serif,serif;font-style:italic}
+#cap{position:absolute;left:80px;right:80px;top:1610px;text-align:center;font-size:46px;font-weight:500;line-height:1.3;color:#1d1a17}
+#cap .w{display:inline-block;white-space:pre}
+#cap .e{font-family:Serif,serif;font-style:italic;font-weight:400;font-size:62px;color:#9a7458}
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- soft background -->
+  <div class="c" id="g1" style="left:540px;top:760px;width:1300px;height:1300px;border-radius:50%;background:radial-gradient(closest-side,rgba(232,214,198,.55),rgba(251,250,248,0))"></div>
+  <div class="c" style="left:540px;top:1920px;width:1600px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(240,226,214,.6),rgba(251,250,248,0))"></div>
+
+  <!-- title -->
+  <div class="c" id="title" style="left:540px;top:190px;display:flex;align-items:center;gap:28px;white-space:nowrap">
+    <span style="width:90px;height:2px;background:#cbab93"></span>
+    <span class="mono" style="font-size:40px;letter-spacing:16px;padding-left:16px">DEPOIMENTO</span>
+    <span style="width:90px;height:2px;background:#cbab93"></span>
+  </div>
+
+  <!-- photo -->
+  <div class="c" id="glow" style="left:540px;top:720px;width:720px;height:880px;border-radius:60px;background:rgba(203,171,147,.35);filter:blur(40px)"></div>
+  <div class="c" id="photo" style="left:540px;top:720px;width:620px;height:780px;border-radius:44px;background:#fff;padding:16px;box-shadow:0 30px 70px rgba(60,40,20,.16),0 3px 10px rgba(60,40,20,.08)">
+    <img src="assets/maria.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 38%;border-radius:30px;display:block">
+    <div style="position:absolute;right:-26px;top:60px;width:76px;height:76px;border-radius:22px;background:#cbab93;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(60,40,20,.18);transform:rotate(8deg)">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2b1d14" stroke-width="1.7" stroke-linejoin="round"><path d="M7 3C4.5 3 3 5 3 7.5c0 2 1 3.5 1.5 5.5.5 2.5.8 8 2.6 8 1.6 0 1.4-5 3.4-5h3c2 0 1.8 5 3.4 5 1.8 0 2.1-5.5 2.6-8 .5-2 1.5-3.5 1.5-5.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg>
+    </div>
+  </div>
+
+  <!-- name -->
+  <div class="c serif" id="name" style="left:540px;top:1200px;font-size:96px;line-height:1">Maria</div>
+  <div class="c" id="sub" style="left:540px;top:1275px;display:flex;align-items:center;gap:18px;white-space:nowrap">
+    <span class="mono" style="font-size:22px;letter-spacing:6px;color:#9a8f86">PACIENTE</span>
+    <span style="color:#e0a43a;font-size:28px;letter-spacing:4px">★★★★★</span>
+  </div>
+
+  <!-- audio player -->
+  <div class="c" id="player" style="left:540px;top:1440px;width:900px;height:170px;border-radius:85px;background:#fff;box-shadow:0 20px 50px rgba(60,40,20,.12),0 2px 6px rgba(60,40,20,.06);display:flex;align-items:center;gap:28px;padding:0 44px 0 30px">
+    <div id="play" style="width:112px;height:112px;border-radius:50%;background:#cbab93;flex:none;display:flex;align-items:center;justify-content:center;position:relative">
+      <div id="ring" style="position:absolute;inset:-10px;border-radius:50%;border:3px solid #cbab93;opacity:0"></div>
+      <svg id="icPause" width="44" height="44" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
+    </div>
+    <div style="flex:1">
+      <div id="wave" style="height:84px;display:flex;align-items:center;gap:4px"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px" class="mono"><span id="tNow" style="font-size:22px;color:#9a8f86">0:00</span><span id="tDur" style="font-size:22px;color:#9a8f86">0:43</span></div>
+    </div>
+  </div>
+
+  <div id="cap"></div>
+  <div id="fade" style="position:absolute;inset:0;background:#fbfaf8;opacity:1"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+let A,W=[],CH=[];
+const SPEC=[['Oi, Paula,','eu tô bem,'],['sentindo só um pouco de','desconforto'],['agora, tomando','meus remédios.'],
+ ['Estava super','aflita,'],['não tinha, tava com','dois dias'],['que não tava conseguindo','dormir,'],
+ ['preocupada, pensando na','dor,'],['com','medo,'],['mas você me passou muita','confiança,'],['muita','tranquilidade'],
+ ['e foi muito','tranquilo,'],['não senti nada de','dor.'],['Nossa, eu tô muito','surpresa,'],['que trabalho','maravilhoso,'],
+ ['você é','incrível,'],['me passou toda a','confiança'],['','maravilhosamente.'],['Nossa,','incrível,'],['incrível o','seu trabalho.']];
+const T0=0.8; // audio starts after a short fade-in
+function build(){let wi=0;CH=SPEC.map(([l,e])=>{const lw=l?l.split(' '):[],ew=e.split(' ');const ws=[...lw.map(x=>({w:x,e:0})),...ew.map(x=>({w:x,e:1}))].map(o=>({...o,s:W[wi++].s+T0}));
+  return {ws,t0:ws[0].s-.15,e:ws[ws.length-1].s+.6};});CH.forEach((c,i)=>{const n=CH[i+1];c.t1=n?Math.min(n.t0-.02,c.e+1.6):c.e+1.6;});
+  const wv=$('wave');wv.innerHTML=A.bars.map(b=>`<div style="flex:1;height:${Math.round(b*84)}px;border-radius:3px;background:#e6ddd4"></div>`).join('');}
+let cur=-1;
+function caps(t){const i=CH.findIndex(c=>t>=c.t0&&t<c.t1);const cap=$('cap');if(i<0){cap.style.opacity=0;return}
+  const c=CH[i];if(i!==cur){cur=i;cap.innerHTML=c.ws.map(w=>`<span class="w${w.e?' e':''}">${w.w} </span>`).join('');}
+  const ki=eo(p(t,c.t0,c.t0+.3)),ko=p(t,c.t1-.2,c.t1);cap.style.opacity=ki*(1-ko);cap.style.transform=`translateY(${(1-ki)*14}px)`;
+  [...cap.children].forEach((sp,j)=>{const k=eo(p(t,c.ws[j].s-.08,c.ws[j].s+.2));sp.style.opacity=lerp(.22,1,k);});}
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+window.render=function(t){
+  const at=t-T0;const fi=Math.max(0,Math.floor(at*A.fps));const lv=at>=0&&fi<A.env.length?A.env[fi]:0;
+  // gentle intro fade + tiny float
+  $('fade').style.opacity=1-eo(p(t,0,.7))+eio(p(t,43.0,43.8));
+  const fl=Math.sin(t*.6)*6;
+  $('photo').style.transform=`translate(-50%,-50%) translateY(${fl}px) rotate(-1.5deg)`;
+  $('glow').style.transform=`translate(-50%,-50%) translateY(${fl}px) scale(${1+lv*.05})`;$('glow').style.opacity=.55+lv*.45;
+  // waveform progress
+  const prog=cl(at/A.dur);const bars=$('wave').children;const n=bars.length;
+  for(let i=0;i<n;i++){const done=i/n<prog;const near=Math.abs(i/n-prog)<1.5/n;bars[i].style.background=done?'#cbab93':'#e6ddd4';bars[i].style.transform=near&&lv>.05?`scaleY(${1+lv*.6})`:'none';}
+  $('tNow').textContent=fmt(cl(at,0,A.dur));$('tDur').textContent=fmt(A.dur);
+  // play button pulse with voice level
+  $('play').style.transform=`scale(${1+lv*.06})`;$('ring').style.opacity=lv*.8;$('ring').style.transform=`scale(${1+lv*.18})`;
+  caps(t);
+};
+window.setup=async function(){A=await (await fetch('audio3.json')).json();W=(await (await fetch('words3.json')).json()).map(a=>({s:a[0]}));build();await document.fonts.ready;return true;};
+</script>
+</body>
+</html>
