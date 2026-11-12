@@ -7,6 +7,7 @@ Vídeo vertical (1080x1920, 30 fps, ~49 s) em estilo motion graphics, montado a 
 - `output/vora-motion.mp4` — vídeo 1 (locução `voz.mp3`, ~49 s)
 - `output/depoimento-maria.mp4` — depoimento da Maria (estilo claro; `motion/v3.html`, sons em `motion/sfx3.py`, foto `assets/maria.jpg`)
 - `output/depoimento-maria-estatico.mp4` — versão calma do depoimento (fundo branco, foto da Dra. Paulla Samara, player com o áudio da paciente Maria; `motion/v4.html`, `motion/sfx4.py`)
+- `output/visita-dra-paulla.mp4` — edição do vídeo da visita (frames melhorados em `motion/frames5/`, gerados com ffmpeg; `motion/v5.html`, `motion/sfx5.py`)
 - `output/vora-motion-2.mp4` — vídeo 2 (locução `voz2.mp3`, ~53 s; animação em `motion/v2.html`, sons em `motion/sfx2.py`)
 
 ## Como foi feito
