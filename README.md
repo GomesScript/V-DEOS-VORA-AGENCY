@@ -4,6 +4,7 @@ Vídeo vertical (1080x1920, 30 fps, ~49 s) em estilo motion graphics, montado a 
 `motion/assets/voz.mp3`, com a identidade da Vora Agency.
 
 **Resultados:**
+- `output/beto-ep1.mp4` — série "A Vida do Beto", EP. 1 "A carteira" (`motion/beto/`: `index.html`, `roteiro.txt`, narração ElevenLabs, sons `sfx_beto.py`)
 - `output/tutorial-claude-code.mp4` — aula de instalação do Claude Code para @contadinho.br (`motion/tutorial/`: `index.html`, `roteiro.txt`, narração ElevenLabs `narracao.mp3` + `words.json`, sons `sfx_tut.py`)
 - `output/vora-motion.mp4` — vídeo 1 (locução `voz.mp3`, ~49 s)
 - `output/depoimento-maria.mp4` — depoimento da Maria (estilo claro; `motion/v3.html`, sons em `motion/sfx3.py`, foto `assets/maria.jpg`)

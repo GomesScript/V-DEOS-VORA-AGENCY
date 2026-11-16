@@ -186,38 +186,49 @@ const NT=[['🏠','Aluguel','venceu ontem 😬'],['💳','Saldo','R$ 23,40'],['�
 $('notifs').innerHTML=NT.map((n,i)=>`<div id="nt${i}" style="display:flex;gap:18px;align-items:center;background:#fff;border:5px solid #2b2340;border-radius:28px;padding:18px 20px;margin-bottom:22px;box-shadow:5px 6px 0 #2b2340"><div style="font-size:56px">${n[0]}</div><div><div style="font-size:34px;font-weight:800;line-height:1">${n[1]}</div><div style="font-size:30px;font-weight:600;color:#d63031">${n[2]}</div></div></div>`).join('');
 $('bills').innerHTML=[0,1,2,3,4].map(i=>`<div class="bill" style="position:absolute;left:${40+i*40}px;top:${30+Math.abs(i-2)*14}px;width:230px;height:120px;background:#7bed9f;border:7px solid #2b2340;border-radius:14px;transform-origin:50% 150%;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center">R$ 100</div>`).join('');
 
-const CAPS=[[0,'O Beto achou <b>R$ 500</b><br>no ônibus.'],[4,'Esse é o <b>Beto</b>.'],[8,'Faltavam <b>5 dias</b><br>pro salário…'],[13,'R$ 500… e o RG do<br><b>Seu Ademar, 71</b>.'],[19,'A cabeça do Beto virou<br>um <b>tribunal</b>.'],[25,'Você decide o que<br>o Beto faz!']];
-const STAT=[[0,23,6,7],[8,23,3,7],[13,23,3,7],[25,23,4,7]];
+const END=51.2;let W=[],CH=[];
+const STAT=[[0,23,6,7],[11.6,23,4,7],[15.39,23,3,7],[21.8,23,8,7],[24.73,23,3,7],[37.4,23,4,7]];
+function buildCaps(){const M={3:['R$ 500',2],11:['27',3],38:['R$ 23,',4],49:['5',1],55:['R$ 500,',2],60:['100.',1],75:['71',3],117:['R$ 50',2]};const T=[];
+  for(let i=0;i<W.length;){if(M[i]){T.push({w:M[i][0],s:W[i].s,e:W[i+M[i][1]-1].e});i+=M[i][1];}else{T.push(W[i]);i++;}}
+  let cur=[];T.forEach((w,i)=>{const prev=T[i-1];if(cur.length&&(cur.length>=4||/[.,:!?]$/.test(prev.w)||prev.w.endsWith('...')||cur.map(x=>x.w).join(' ').length+w.w.length>20)){CH.push(cur);cur=[];}cur.push(w);});CH.push(cur);
+  CH.forEach((c,i)=>{c.t0=c[0].s-.06;c.t1=CH[i+1]?Math.min(CH[i+1][0].s-.06,c[c.length-1].e+.7):END-.3;});}
+let curC=-1;
+function renderCaps(t){const i=CH.findIndex(c=>t>=c.t0&&t<c.t1);const cap=$('cap');if(i<0){cap.style.opacity=0;return}
+  const c=CH[i];if(i!==curC){curC=i;cap.innerHTML=c.map(x=>`<span class="w" style="display:inline-block;margin:0 12px">${x.w.replace('...','…')}</span>`).join('');}
+  const k=p(t,c.t0,c.t0+.25);cap.style.opacity=1;cap.style.transform=`scale(${lerp(.6,1,eback(k))})`;
+  [...cap.children].forEach((sp,j)=>{const on=t>=c[j].s-.03;const cur=on&&(j==c.length-1||t<c[j+1].s-.03);sp.style.color=cur?'#ffc93c':'#fff';sp.style.opacity=on?1:.55;sp.style.transform=cur?'scale(1.12) rotate(-2deg)':'none';});}
 
 window.render=function(t){
   // S1 bus
-  if(scene('s1',t,0,4)){$('city').style.transform=`translateX(${-(t*300)%2000}px)`;
-    $('b1').innerHTML=beto({e:t<1.2?'side':'shock',dollar:false});pop($('b1'),t,0,{y:Math.sin(t*14)*3});
-    pop($('wallet'),t,.6,{r:-8,s:1.45});const sp=.6+.4*Math.abs(Math.sin(t*5));S($('spark'),{s:sp,a:t>.8?1:0});}
-  // S2
-  if(scene('s2',t,4,8)){document.querySelectorAll('.cf').forEach((c,i)=>{c.style.marginTop=((t*80*(1+i%3))%400)+'px'});
-    $('b2').innerHTML=beto({e:'grin',wave:Math.sin(t*8)*12+1});pop($('b2'),t,4);pop($('nameCard'),t,4.6,{r:-3});}
-  // S3
-  if(scene('s3',t,8,13)){pop($('phone'),t,8.1,{r:6});NT.forEach((n,i)=>{const el=$('nt'+i);const k=p(t,8.7+i*.7,9.1+i*.7);el.style.opacity=eo(k);el.style.transform=`translateX(${(1-eo(k))*200}px)`;});
-    $('b3').innerHTML=beto({e:'worry',sweat:true});pop($('b3'),t,8.3,{r:-4,y:Math.sin(t*3)*6});}
-  // S4
-  if(scene('s4',t,13,19)){$('rays').style.transform=`rotate(${t*8}deg) scale(2)`;pop($('openW'),t,13.1);
-    document.querySelectorAll('.bill').forEach((b,i)=>{const k=eo(p(t,13.5+i*.12,13.9+i*.12));b.style.transform=`rotate(${lerp(0,(i-2)*14,k)}deg) translateY(${(1-k)*60}px)`;b.style.opacity=k;});
-    pop($('rg'),t,14.6,{},.4);pop($('pic'),t,15.6,{r:7},.4);$('b4').innerHTML=beto({e:t<16?'grin':'worry',dollar:t<16,sweat:t>=16});pop($('b4'),t,13.4,{r:6});}
-  // S5
-  if(scene('s5',t,19,25)){pop($('vs'),t,19.1,{r:Math.sin(t*6)*4});$('angel').innerHTML=mini('angel');$('devil').innerHTML=mini('devil');
-    pop($('angel'),t,19.4,{y:Math.sin(t*3)*14,r:-6});pop($('devil'),t,19.8,{y:Math.cos(t*3)*14,r:6});pop($('bubA'),t,20.6,{r:-3});pop($('bubD'),t,21.6,{r:3});
-    $('b5').innerHTML=beto({e:'think',hand:true});pop($('b5'),t,19.2);}
-  // S6
-  if(scene('s6',t,25,40)){pop($('agora'),t,25.1,{r:Math.sin(t*5)*3});pop($('optA'),t,25.6,{r:-1.5});pop($('optB'),t,26.0,{r:1.5});pop($('vote'),t,26.6,{s:1+.04*Math.sin(t*6)});
-    S($('timer'),{a:eo(p(t,26.8,27.1))});$('tfill').style.width=(100*(1-p(t,27,40)))+'%';$('b6').innerHTML=beto({e:'shock'});pop($('b6'),t,26.9,{r:-8});}
+  if(scene('s1',t,0,2.55)){$('city').style.transform=`translateX(${-(t*300)%2000}px)`;
+    $('b1').innerHTML=beto({e:t<.7?'side':'shock'});pop($('b1'),t,0,{y:Math.sin(t*14)*3});
+    pop($('wallet'),t,.7,{r:-8,s:1.45});const sp=.6+.4*Math.abs(Math.sin(t*5));S($('spark'),{s:sp,a:t>.9?1:0});}
+  // S2 meet
+  if(scene('s2',t,2.55,9.45)){document.querySelectorAll('.cf').forEach((c,i)=>{c.style.marginTop=((t*80*(1+i%3))%400)+'px'});
+    $('b2').innerHTML=beto({e:t>7.1&&t<8.1?'worry':'grin',wave:t<5?Math.sin(t*8)*12+1:0});pop($('b2'),t,2.6);pop($('nameCard'),t,3.7,{r:-3});}
+  // S3 context
+  if(scene('s3',t,9.45,17.85)){pop($('phone'),t,9.55,{r:6});[11.6,13.05,15.39].forEach((ti,i)=>{const el=$('nt'+i);const k=p(t,ti-.1,ti+.3);el.style.opacity=eo(k);el.style.transform=`translateX(${(1-eo(k))*200}px) scale(${1+.06*Math.sin(Math.PI*p(t,ti+.2,ti+.5))})`;});
+    $('b3').innerHTML=beto({e:t<11.6?'smile':'worry',sweat:t>=13});pop($('b3'),t,9.7,{r:-4,y:Math.sin(t*3)*6});}
+  // S4 wallet
+  if(scene('s4',t,17.85,29.05)){$('rays').style.transform=`rotate(${t*8}deg) scale(2)`;pop($('openW'),t,17.95);
+    document.querySelectorAll('.bill').forEach((b,i)=>{const k=eo(p(t,19.0+i*.12,19.4+i*.12));b.style.transform=`rotate(${lerp(0,(i-2)*14,k)}deg) translateY(${(1-k)*60}px)`;b.style.opacity=k;});
+    pop($('rg'),t,24.6,{},.4);pop($('pic'),t,27.9,{r:7},.4);const rich=t>=21.8&&t<23.7;$('b4').innerHTML=beto({e:rich?'grin':(t<21.8?'shock':'worry'),dollar:rich,sweat:t>=24.7});pop($('b4'),t,18.2,{r:6,s:rich?1+.04*Math.sin(t*12):1});}
+  // S5 tribunal
+  if(scene('s5',t,29.05,37.45)){pop($('vs'),t,30.0,{r:Math.sin(t*6)*4});$('angel').innerHTML=mini('angel');$('devil').innerHTML=mini('devil');
+    pop($('angel'),t,32.5,{y:Math.sin(t*3)*14,r:-6});pop($('devil'),t,35.2,{y:Math.cos(t*3)*14,r:6});pop($('bubA'),t,33.6,{r:-3});pop($('bubD'),t,36.1,{r:3});
+    $('b5').innerHTML=beto({e:t<34?'think':(t<36?'side':'worry'),hand:true});pop($('b5'),t,29.15);}
+  // S6 choice
+  if(scene('s6',t,37.45,60)){pop($('agora'),t,37.5,{r:Math.sin(t*5)*3});pop($('optA'),t,38.3,{r:-1.5,s:1+.03*Math.sin(Math.PI*p(t,38.4,39.2))});pop($('optB'),t,41.35,{r:1.5,s:1+.03*Math.sin(Math.PI*p(t,41.4,42.2))});
+    pop($('vote'),t,45.65,{s:1+.04*Math.sin(t*6)});S($('timer'),{a:eo(p(t,46.3,46.6))});$('tfill').style.width=(100*(1-p(t,46.5,END)))+'%';
+    $('b6').innerHTML=beto({e:t<44?'shock':'grin'});pop($('b6'),t,46.4,{r:-8});}
   // HUD stats
-  let st=STAT[0];STAT.forEach(s=>{if(t>=s[0])st=s});$('vM').textContent=st[1];$('vH').textContent=st[2];$('vR').textContent=st[3];
-  $('stH').style.background=t>=8&&t<9?'#ff7675':'#fff';
-  // captions
-  let c=CAPS[0];CAPS.forEach(x=>{if(t>=x[0])c=x});$('cap').innerHTML=c[1];const k=p(t,c[0],c[0]+.35);$('cap').style.transform=`scale(${lerp(.6,1,eback(k))})`;
+  let st=STAT[0];STAT.forEach(x=>{if(t>=x[0])st=x});$('vM').textContent=st[1];$('vH').textContent=st[2];$('vR').textContent=st[3];
+  const hit=STAT.find(x=>x[0]>0&&t>=x[0]&&t<x[0]+.5);$('stH').style.background=hit?(hit[2]>4?'#7bed9f':'#ff7675'):'#fff';$('stH').style.transform=hit?`scale(${1+.25*Math.sin(Math.PI*p(t,hit[0],hit[0]+.5))})`:'none';
+  $('stM').style.background=t>=13.0&&t<13.6?'#ff7675':'#fff';
+  renderCaps(t);
+  const f=p(t,END-.4,END);document.getElementById('stage').style.filter=f>0?`brightness(${1-f})`:'';
 };
-window.setup=async function(){await document.fonts.ready;return true;};
+window.setup=async function(){W=(await (await fetch('words.json')).json()).map(a=>({s:a[0],e:a[1],w:a[2]}));buildCaps();await document.fonts.ready;return true;};
 </script>
 </body>
 </html>
