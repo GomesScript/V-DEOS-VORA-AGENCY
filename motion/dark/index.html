@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>O Arquivista - Caso 001</title>
+<style>
+@font-face{font-family:Type;src:url(../assets/fonts/special-elite-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Osw;font-weight:500;src:url(../assets/fonts/oswald-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Osw;font-weight:700;src:url(../assets/fonts/oswald-latin-700-normal.woff2) format('woff2')}
+:root{--bg:#0a0908;--paper:#d8cab0;--ink:#2a2118;--red:#c4161c}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Osw,sans-serif;color:#eee}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+#world{position:absolute;inset:0;transform-origin:540px 900px}
+.c{position:absolute;transform:translate(-50%,-50%)}
+.scene{position:absolute;inset:0;display:none}
+.paper{background:linear-gradient(170deg,#e2d5bb,#cbbb9c);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.7);font-family:Type,monospace}
+.stamp{font-family:Osw;font-weight:700;color:var(--red);border:7px solid var(--red);padding:6px 26px;letter-spacing:6px;text-transform:uppercase;white-space:nowrap;mix-blend-mode:multiply;opacity:.9}
+.type{font-family:Type,monospace}
+#cap{position:absolute;left:60px;right:60px;top:1450px;text-align:center;font-family:Osw;font-weight:700;font-size:70px;line-height:1.12;text-transform:uppercase;letter-spacing:1px;text-shadow:0 4px 0 #000,0 0 30px rgba(0,0,0,.9)}
+#cap .w{display:inline-block;white-space:pre}
+#brand{position:absolute;left:540px;top:150px;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="world">
+  <div class="c" id="lampGlow" style="left:540px;top:700px;width:1400px;height:1400px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,190,120,.10),rgba(0,0,0,0))"></div>
+
+  <!-- A: phone ringing -->
+  <div class="scene" id="sA">
+    <div class="c type" id="clock" style="left:540px;top:520px;font-family:Osw;font-weight:700;font-size:200px;color:var(--red);letter-spacing:8px;text-shadow:0 0 40px rgba(196,22,28,.8)">03:14</div>
+    <svg class="c" id="phone" style="left:540px;top:930px" width="520" height="400" viewBox="0 0 260 200">
+      <path d="M40 190 L60 95 Q130 80 200 95 L220 190 Z" fill="#1a1412" stroke="#3a2c26" stroke-width="2"/>
+      <circle cx="130" cy="140" r="42" fill="#0d0a09" stroke="#5a463c" stroke-width="2"/>
+      <g fill="#2b211d" stroke="#6b5448" stroke-width="1.2" id="dialH"></g>
+      <circle cx="130" cy="140" r="12" fill="#c4161c"/>
+      <g id="handset"><path d="M30 70 Q130 30 230 70 L222 90 Q200 76 185 80 L180 66 Q130 54 80 66 L75 80 Q60 76 38 90 Z" fill="#221a17" stroke="#4a3a32" stroke-width="2"/></g>
+    </svg>
+    <div class="c stamp" id="nightStamp" style="left:760px;top:1180px;font-size:60px;transform:translate(-50%,-50%) rotate(-8deg)">Noite 7</div>
+  </div>
+
+  <!-- B / I: the Archivist -->
+  <div class="scene" id="sB">
+    <svg class="c" id="cone" style="left:540px;top:620px" width="1000" height="1100" viewBox="0 0 1000 1100"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf8a" stop-opacity=".35"/><stop offset="1" stop-color="#ffcf8a" stop-opacity="0"/></linearGradient></defs><path d="M470 60 L530 60 L900 1100 L100 1100 Z" fill="url(#cg)"/></svg>
+    <svg class="c" id="lamp" style="left:540px;top:150px" width="200" height="200" viewBox="0 0 100 100"><line x1="50" y1="0" x2="50" y2="40" stroke="#222" stroke-width="2"/><path d="M28 60 L72 60 L60 40 L40 40 Z" fill="#1d1a16" stroke="#3a332a"/><ellipse cx="50" cy="62" rx="10" ry="4" fill="#ffd9a0"/></svg>
+    <svg class="c" id="arch" style="left:540px;top:900px" width="720" height="900" viewBox="0 0 400 500">
+      <defs><radialGradient id="eye" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff6a5a"/><stop offset=".4" stop-color="#e01b22"/><stop offset="1" stop-color="#e01b22" stop-opacity="0"/></radialGradient>
+        <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a4a3a"/><stop offset="1" stop-color="#0a0908"/></linearGradient></defs>
+      <path d="M200 238 C150 238 120 250 60 300 C30 325 15 380 10 500 L390 500 C385 380 370 325 340 300 C280 250 250 238 200 238 Z" fill="#070606" stroke="url(#rim)" stroke-width="3"/>
+      <path d="M170 245 L200 330 L230 245" fill="none" stroke="#2a221c" stroke-width="4"/>
+      <path d="M150 250 L120 330 L190 300 Z M250 250 L280 330 L210 300 Z" fill="#0d0b0a" stroke="#2a221c" stroke-width="2"/>
+      <ellipse cx="200" cy="190" rx="62" ry="72" fill="#060505"/>
+      <ellipse cx="200" cy="148" rx="135" ry="20" fill="#0b0a09" stroke="#4a3d30" stroke-width="2.5"/>
+      <path d="M135 148 C135 100 150 66 200 64 C250 66 265 100 265 148 Z" fill="#0b0a09" stroke="#4a3d30" stroke-width="2.5"/>
+      <path d="M137 132 L263 132" stroke="#3a2c22" stroke-width="9"/>
+      <g id="eyes"><ellipse cx="176" cy="196" rx="15" ry="7" fill="url(#eye)"/><ellipse cx="224" cy="196" rx="15" ry="7" fill="url(#eye)"/></g>
+    </svg>
+    <div class="c" id="desk" style="left:540px;top:1330px;width:1200px;height:260px;background:linear-gradient(#2a1d14,#120c08);box-shadow:0 -6px 30px rgba(0,0,0,.8)"></div>
+    <div class="c paper" id="folder" style="left:540px;top:1270px;width:640px;height:150px;border-radius:6px;background:linear-gradient(#b89a6a,#8f7448);transform-origin:50% 100%">
+      <div style="position:absolute;left:30px;top:-40px;width:220px;height:46px;border-radius:8px 8px 0 0;background:#b89a6a;font-family:Osw;font-weight:700;font-size:26px;color:#3a2a18;display:flex;align-items:center;justify-content:center">CASO Nº 001</div>
+    </div>
+    <div class="c stamp" id="stampConf" style="left:560px;top:1265px;font-size:46px;transform:translate(-50%,-50%) rotate(-6deg)">Confidencial</div>
+    <div class="c stamp" id="stampArq" style="left:540px;top:1265px;font-size:62px;transform:translate(-50%,-50%) rotate(-10deg)">Arquivado</div>
+    <div class="c type" id="ouNao" style="left:720px;top:1120px;font-size:64px;color:var(--red);transform:translate(-50%,-50%) rotate(-4deg);white-space:nowrap">...ou não?</div>
+  </div>
+
+  <!-- C: dossier -->
+  <div class="scene" id="sC">
+    <div class="c paper" id="dossier" style="left:520px;top:860px;width:860px;height:1000px;padding:60px 60px;transform-origin:50% 50%">
+      <div style="font-family:Osw;font-weight:700;font-size:44px;letter-spacing:4px;border-bottom:4px solid var(--ink);padding-bottom:10px">RELATÓRIO · CASO Nº 001</div>
+      <div id="fields" style="margin-top:40px;font-size:40px;line-height:1.8"></div>
+    </div>
+    <div class="c" id="polaroid" style="left:720px;top:1090px;width:420px;height:480px;background:#f2ede2;padding:24px 24px 80px;box-shadow:0 20px 50px rgba(0,0,0,.6)">
+      <svg width="372" height="376" viewBox="0 0 372 376" style="display:block;background:#0d1016">
+        <circle cx="290" cy="70" r="30" fill="#cfd3c8" opacity=".85"/>
+        <path d="M0 230 Q120 200 372 225 L372 376 L0 376 Z" fill="#0a0c0f"/>
+        <path d="M150 376 L180 232 L196 232 L240 376 Z" fill="#3a3024"/>
+        <path d="M40 232 L40 180 L90 150 L140 180 L140 232 Z" fill="#141414" stroke="#2a2a2a"/>
+        <rect id="win" x="100" y="190" width="22" height="20" fill="#ffcf6a"/>
+        <path d="M0 240 L10 160 L25 240 M330 230 L345 140 L360 230 M300 232 L310 175 L322 232" stroke="#05070a" stroke-width="10" fill="none"/>
+      </svg>
+      <div class="type" style="position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:30px;color:#3a2a1c">fim da estrada · 2009</div>
+    </div>
+    <div class="c" id="clip" style="left:640px;top:860px;width:30px;height:120px;border-radius:15px;border:7px solid #9a9a9a"></div>
+  </div>
+
+  <!-- D: nights + breathing -->
+  <div class="scene" id="sD">
+    <div class="c type" style="left:540px;top:470px;font-size:46px;color:#bbb;letter-spacing:6px" id="dLab">TODA NOITE · 03:14</div>
+    <div class="c" id="tally" style="left:540px;top:720px;display:flex;gap:26px"></div>
+    <svg class="c" id="breath" style="left:540px;top:1060px" width="900" height="300" viewBox="0 0 900 300"><path id="bpath" d="" fill="none" stroke="#c4161c" stroke-width="6" style="filter:drop-shadow(0 0 12px #c4161c)"/></svg>
+    <div class="c type" id="bLab" style="left:540px;top:1250px;font-size:40px;color:#999;letter-spacing:4px">— respiração —</div>
+  </div>
+
+  <!-- E: answering machine -->
+  <div class="scene" id="sE">
+    <div class="c" id="machine" style="left:540px;top:800px;width:820px;height:520px;border-radius:24px;background:linear-gradient(#2a2420,#151210);border:3px solid #3d342c;box-shadow:0 30px 80px rgba(0,0,0,.8)">
+      <div style="position:absolute;left:50px;top:40px;font-family:Osw;font-weight:500;font-size:30px;color:#9a8a78;letter-spacing:4px">SECRETÁRIA ELETRÔNICA</div>
+      <div id="rec" style="position:absolute;right:56px;top:44px;width:30px;height:30px;border-radius:50%;background:#c4161c;box-shadow:0 0 20px #c4161c"></div>
+      <div style="position:absolute;left:110px;top:120px;width:600px;height:330px;border-radius:16px;background:#0c0a09;border:3px solid #3d342c">
+        <div style="position:absolute;left:40px;top:30px;right:40px;height:100px;background:#d8cab0;border-radius:6px;font-family:Type;font-size:34px;color:#2a2118;display:flex;align-items:center;justify-content:center">MENSAGEM · 03:14</div>
+        <svg style="position:absolute;left:60px;top:150px" width="480" height="160" viewBox="0 0 480 160"><rect x="0" y="20" width="480" height="120" rx="20" fill="#1c1715"/>
+          <g id="reel1" transform="translate(130 80)"><circle r="52" fill="#2d2622" stroke="#6b5a4c" stroke-width="3"/><g stroke="#8a7462" stroke-width="7"><line x1="0" y1="-40" x2="0" y2="40"/><line x1="-35" y1="-20" x2="35" y2="20"/><line x1="-35" y1="20" x2="35" y2="-20"/></g><circle r="12" fill="#0c0a09"/></g>
+          <g id="reel2" transform="translate(350 80)"><circle r="52" fill="#2d2622" stroke="#6b5a4c" stroke-width="3"/><g stroke="#8a7462" stroke-width="7"><line x1="0" y1="-40" x2="0" y2="40"/><line x1="-35" y1="-20" x2="35" y2="20"/><line x1="-35" y1="20" x2="35" y2="-20"/></g><circle r="12" fill="#0c0a09"/></g>
+          <rect x="182" y="64" width="116" height="32" fill="#0c0a09"/></svg>
+      </div>
+    </div>
+    <div class="c stamp" id="naoAt" style="left:540px;top:470px;font-size:52px;transform:translate(-50%,-50%) rotate(-5deg);mix-blend-mode:normal">Não atendeu</div>
+    <div class="c type" id="quote" style="left:540px;top:1200px;width:920px;text-align:center;font-size:66px;color:#ff3b3f;text-shadow:0 0 30px rgba(196,22,28,.9)"></div>
+  </div>
+
+  <!-- F: corridor -->
+  <div class="scene" id="sF">
+    <svg class="c" id="corr" style="left:540px;top:880px" width="1080" height="1400" viewBox="0 0 1080 1400">
+      <defs><linearGradient id="dl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffe2b0"/><stop offset="1" stop-color="#ffe2b0" stop-opacity=".2"/></linearGradient></defs>
+      <path d="M0 0 L420 470 L420 930 L0 1400 Z" fill="#0f0d0c"/><path d="M1080 0 L660 470 L660 930 L1080 1400 Z" fill="#0c0b0a"/>
+      <path d="M0 1400 L420 930 L660 930 L1080 1400 Z" fill="#14110f"/><path d="M0 0 L420 470 L660 470 L1080 0 Z" fill="#080707"/>
+      <rect x="420" y="470" width="240" height="460" fill="#050404"/>
+      <rect x="455" y="520" width="170" height="410" fill="#1a1512" stroke="#2c241e" stroke-width="3"/>
+      <rect id="doorGap" x="455" y="520" width="8" height="410" fill="url(#dl)"/>
+      <path id="floorLight" d="M455 930 L463 930 L700 1400 L400 1400 Z" fill="#ffe2b0" opacity=".12"/>
+      <g stroke="#1c1815" stroke-width="3"><line x1="0" y1="200" x2="420" y2="560"/><line x1="1080" y1="200" x2="660" y2="560"/></g>
+    </svg>
+  </div>
+
+  <!-- G: report + evidence -->
+  <div class="scene" id="sG">
+    <div class="c paper" id="report" style="left:540px;top:820px;width:860px;height:900px;padding:60px">
+      <div style="font-family:Osw;font-weight:700;font-size:44px;letter-spacing:4px;border-bottom:4px solid var(--ink);padding-bottom:10px">BOLETIM DE OCORRÊNCIA</div>
+      <div style="margin-top:40px;font-size:38px;line-height:1.8" id="repTxt"></div>
+    </div>
+    <div class="c stamp" id="stampDes" style="left:540px;top:760px;font-size:76px;transform:translate(-50%,-50%) rotate(-9deg)">Desaparecida</div>
+    <div class="c" id="bag" style="left:700px;top:1230px;width:460px;height:340px;border-radius:12px;background:rgba(220,230,235,.12);border:3px solid rgba(220,230,235,.35);box-shadow:0 20px 50px rgba(0,0,0,.6)">
+      <div style="position:absolute;left:0;right:0;top:20px;height:8px;background:rgba(220,230,235,.4)"></div>
+      <div style="position:absolute;left:40px;top:70px;width:260px;height:160px;border-radius:12px;background:#2a2420;border:3px solid #4a3d33"><div style="margin:20px;height:50px;background:#d8cab0;border-radius:4px"></div><div style="display:flex;justify-content:space-around;margin-top:10px"><div style="width:50px;height:50px;border-radius:50%;border:6px solid #6b5a4c"></div><div style="width:50px;height:50px;border-radius:50%;border:6px solid #6b5a4c"></div></div></div>
+      <div style="position:absolute;right:24px;bottom:24px;background:#c4161c;color:#fff;font-family:Osw;font-weight:700;font-size:30px;padding:8px 16px;transform:rotate(-4deg)">EVIDÊNCIA 01</div>
+    </div>
+  </div>
+
+  <!-- H: glitch "O SEU" -->
+  <div class="scene" id="sH">
+    <svg class="c" id="wave" style="left:540px;top:720px" width="960" height="300" viewBox="0 0 960 300"><path id="wpath" d="" fill="none" stroke="#ddd" stroke-width="4"/></svg>
+    <div class="c type" id="hTxt" style="left:540px;top:1000px;font-size:52px;color:#bbb;white-space:nowrap">a voz dizia outro nome…</div>
+    <div class="c" id="oSeu" style="left:540px;top:860px;font-family:Osw;font-weight:700;font-size:300px;color:#ff2b31;letter-spacing:10px;white-space:nowrap;text-shadow:0 0 60px rgba(196,22,28,.9)">O SEU.</div>
+  </div>
+</div>
+
+  <!-- CTA overlay -->
+  <div class="c" id="cta" style="left:540px;top:1700px;display:flex;flex-direction:column;align-items:center;gap:20px;opacity:0">
+    <div style="font-family:Osw;font-weight:700;font-size:44px;background:#c4161c;padding:12px 34px;border-radius:10px;white-space:nowrap">💬 VOCÊ ATENDERIA?</div>
+    <div class="type" id="next" style="font-size:38px;color:#ddd;white-space:nowrap">Amanhã: CASO Nº 002 →</div>
+  </div>
+
+  <div id="brand"><span style="width:18px;height:18px;border-radius:50%;background:#c4161c;box-shadow:0 0 16px #c4161c;display:inline-block" id="bdot"></span>
+    <span style="font-family:Osw;font-weight:700;font-size:40px;letter-spacing:8px">O ARQUIVISTA</span><span class="type" style="font-size:26px;color:#999">· caso nº 001</span></div>
+  <div class="type" style="position:absolute;left:540px;top:205px;transform:translateX(-50%);font-size:22px;color:#7a7066;letter-spacing:3px;white-space:nowrap">história de ficção</div>
+  <div id="cap"></div>
+  <div id="flash" style="position:absolute;inset:0;background:#c4161c;mix-blend-mode:screen;opacity:0"></div>
+  <canvas id="fx" width="540" height="960" style="position:absolute;inset:0;width:1080px;height:1920px;pointer-events:none"></canvas>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.85) 100%);pointer-events:none"></div>
+  <div id="fade" style="position:absolute;inset:0;background:#000;opacity:1"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eback=x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+let sd=9;const rnd=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+const hash=n=>{const x=Math.sin(n*127.1)*43758.5453;return x-Math.floor(x)};
+function S(el,o={}){const {x=0,y=0,s=1,r=0,a=1,b=0}=o;el.style.transform=`translate(-50%,-50%) translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`;el.style.opacity=a;el.style.filter=b>.1?`blur(${b.toFixed(2)}px)`:'';}
+function pop(el,t,t0,dur=.5,base={},from={}){const k=p(t,t0,t0+dur);const f=eo(k);S(el,{...base,s:(base.s??1)*lerp(from.s??.8,1,eback(k)),y:(base.y??0)+lerp(from.y??40,0,f),a:(base.a??1)*f,b:(1-f)*(from.b??14)});return k;}
+function stamp(el,t,t0,rot){const k=p(t,t0,t0+.18);S(el,{s:lerp(2.4,1,eo(k)),r:rot,a:k>0?.9:0});return k;}
+function scene(id,t,a,b){const el=$(id);if(t<a||t>b){el.style.display='none';return false}el.style.display='block';
+  const pi=eo(p(t,a,a+.5)),po=eio(p(t,b-.45,b));el.style.opacity=pi*(1-po);el.style.transform=`scale(${lerp(1.08,1,pi)*lerp(1,.96,po)})`;
+  const bl=(1-pi)*16+po*16;el.style.filter=bl>.1?`blur(${bl}px)`:'';return true;}
+const END=72.2;let W=[];
+
+// captions (karaoke, red current word)
+let CH=[];
+function buildCaps(){let cur=[];W.forEach((w,i)=>{const prev=W[i-1];if(cur.length&&(cur.length>=3||/[.,:!?]$/.test(prev.w)||prev.w.endsWith('...')||cur.map(x=>x.w).join(' ').length+w.w.length>18)){CH.push(cur);cur=[];}cur.push(w);});CH.push(cur);
+  CH.forEach((c,i)=>{c.t0=c[0].s-.06;c.t1=CH[i+1]?Math.min(CH[i+1][0].s-.06,c[c.length-1].e+.8):END-.8;});}
+let curC=-1;
+function renderCaps(t){const i=CH.findIndex(c=>t>=c.t0&&t<c.t1);const cap=$('cap');if(i<0||(t>60.7&&t<62.0)){cap.style.opacity=0;return}
+  const c=CH[i];if(i!==curC){curC=i;cap.innerHTML=c.map(x=>`<span class="w">${x.w.replace('...','…')} </span>`).join('');}
+  const k=eo(p(t,c.t0,c.t0+.15));cap.style.opacity=k;cap.style.transform=`scale(${lerp(.85,1,k)})`;
+  [...cap.children].forEach((sp,j)=>{const on=t>=c[j].s-.03;const cur=on&&(j==c.length-1||t<c[j+1].s-.03);sp.style.color=cur?'#ff2b31':(on?'#fff':'rgba(255,255,255,.35)');sp.style.transform=cur?'scale(1.08)':'none';});}
+
+// build static bits
+let dh='';for(let i=0;i<10;i++){const a=(-60+i*24)*Math.PI/180;dh+=`<circle cx="${130+Math.cos(a)*30}" cy="${140+Math.sin(a)*30}" r="6"/>`;}$('dialH').innerHTML=dh;
+const FIELDS=[['LOCAL:','Interior de Minas Gerais',13.97],['ANO:','2009',15.84],['NOME:','Lúcia',17.73],['OBS.:','Morava sozinha',18.39]];
+$('fields').innerHTML=FIELDS.map((f,i)=>`<div id="fd${i}"><b style="font-family:Osw;letter-spacing:3px">${f[0]}</b> <span id="fv${i}"></span></div>`).join('');
+$('tally').innerHTML=Array.from({length:7},(_,i)=>`<div id="tl${i}" style="width:90px;height:150px;display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:14px;height:110px;background:${i==6?'#c4161c':'#d8cab0'};border-radius:7px;transform:rotate(${(i%2?4:-4)}deg)"></div><div class="type" style="font-size:26px;color:#999">${i+1}</div></div>`).join('');
+const REP=[['Endereço:','fim da estrada de terra',48.0],['Situação:','casa vazia',48.74],['Pertences:','todos no lugar',50.2],['Evidência:','fita da secretária',52.58]];
+$('repTxt').innerHTML=REP.map((f,i)=>`<div><b style="font-family:Osw;letter-spacing:2px">${f[0]}</b> <span id="rv${i}"></span></div>`).join('');
+const typed=(s,t,a,b)=>s.slice(0,Math.round(s.length*p(t,a,b)));
+
+// film fx
+const fx=$('fx').getContext('2d');const GR=[];for(let k=0;k<5;k++){const im=fx.createImageData(540,960);for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=26;}GR.push(im);}
+function film(t,fr){fx.putImageData(GR[fr%5],0,0);
+  if(hash(fr*.37)>.55){fx.strokeStyle=`rgba(255,255,255,${.08+.1*hash(fr)})`;fx.lineWidth=1;const x=hash(fr*1.7)*540;fx.beginPath();fx.moveTo(x,0);fx.lineTo(x+hash(fr*3.1)*6-3,960);fx.stroke();}
+  for(let k=0;k<3;k++){if(hash(fr*5.3+k)>.7){fx.fillStyle='rgba(255,255,255,.12)';fx.beginPath();fx.arc(hash(fr+k*9)*540,hash(fr*2+k)*960,1+hash(fr*7+k)*2,0,6.3);fx.fill();}}}
+function glitch(el,amt,t){if(amt<=0){el.style.textShadow=el.dataset.ts||'';return}const dx=(hash(t*60)-.5)*40*amt;el.style.textShadow=`${dx}px 0 #00e5ff, ${-dx}px 0 #ff2b31, 0 0 60px rgba(196,22,28,.9)`;}
+
+window.render=function(t){
+  const fr=Math.round(t*30);
+  // global flicker + shake
+  let shake=0;
+  const ringA=(t>1.9&&t<2.9)||(t>3.4&&t<5.0);if(ringA)shake=4;
+  if(t>61.1&&t<61.8)shake=14*(1-p(t,61.1,61.8));
+  const flick=.93+.07*hash(Math.floor(t*12));
+  $('world').style.transform=`translate(${(hash(fr*1.3)-.5)*shake*2}px,${(hash(fr*2.1)-.5)*shake*2}px)`;
+  $('world').style.filter=`brightness(${flick}) contrast(1.05) sepia(.12)`;
+  $('lampGlow').style.opacity=.6+.4*hash(Math.floor(t*8));
+
+  // A
+  if(scene('sA',t,-1,5.6)){const ring=ringA?Math.sin(t*90)*5:0;
+    S($('clock'),{a:eo(p(t,0.05,.6))*(t>0.55&&t<1.2?(hash(fr)>.3?1:.4):1),s:lerp(1.2,1,eo(p(t,0,.8)))});
+    pop($('phone'),t,.2,.6,{r:ring*.6},{s:.85,y:30});$('handset').setAttribute('transform',`translate(0 ${ringA?-Math.abs(Math.sin(t*45))*6:0})`);
+    stamp($('nightStamp'),t,3.81,-8);}
+  // B (+ I reuse)
+  const inB=scene('sB',t,5.5,14.0)||scene('sB',t,62.0,END+1);
+  if(inB){const late=t>60;const t0=late?62.0:5.5;
+    const sw=Math.sin(t*1.6)*4;$('lamp').style.transform=`translate(-50%,-50%) rotate(${sw}deg)`;$('lamp').style.transformOrigin='50% 0';
+    $('cone').style.transform=`translate(-50%,-50%) rotate(${sw*.6}deg)`;$('cone').style.transformOrigin='50% 5%';$('cone').style.opacity=.7+.3*hash(Math.floor(t*10));
+    pop($('arch'),t,t0+.1,1.2,{y:Math.sin(t*.9)*6},{s:1.06,y:30,b:20});
+    const eyeOn=late?1:eo(p(t,6.2,6.8));const blink=(hash(Math.floor(t*1.3))>.85&&(t*1.3%1)<.12)?.1:1;$('eyes').style.opacity=eyeOn*blink*(.8+.2*Math.sin(t*3));
+    pop($('desk'),t,t0,.6,{},{s:1,y:60,b:0});
+    const open=late?1-eio(p(t,62.0,62.5)):eio(p(t,12.0,12.7));
+    $('folder').style.transform=`translate(-50%,-50%) perspective(900px) rotateX(${lerp(0,55,open)}deg)`;$('folder').style.opacity=eo(p(t,t0+.2,t0+.8));
+    if(!late){stamp($('stampConf'),t,13.25,-6);$('stampArq').style.opacity=0;$('ouNao').style.opacity=0;}
+    else{$('stampConf').style.opacity=0;stamp($('stampArq'),t,62.58,-10);const on=p(t,64.0,64.6);$('ouNao').textContent='...ou não?'.slice(0,Math.round(10*on));S($('ouNao'),{r:-4,a:on>0?1:0});}}
+  // C dossier
+  if(scene('sC',t,13.75,22.15)){pop($('dossier'),t,13.85,.6,{r:-1.5},{s:1.1,y:60});
+    FIELDS.forEach((f,i)=>{$('fv'+i).textContent=typed(f[1],t,f[2],f[2]+.25+f[1].length*.035);});
+    pop($('polaroid'),t,19.5,.6,{r:6},{s:1.3,y:-80,b:20});pop($('clip'),t,19.9,.3,{r:0},{s:1.4,y:-20});
+    $('win').setAttribute('opacity',hash(Math.floor(t*6))>.2?1:.3);}
+  // D nights
+  if(scene('sD',t,22.0,30.75)){pop($('dLab'),t,22.2,.5,{},{s:.9,y:20});
+    for(let i=0;i<7;i++){const ti=22.6+i*.5;const el=$('tl'+i);const k=p(t,ti,ti+.25);el.style.opacity=i<6?eo(k):0;el.style.transform=`scale(${lerp(1.6,1,eo(k))})`;}
+    const bk=eo(p(t,28.7,29.3));let d='';for(let x=0;x<=900;x+=6){const env=Math.sin((t-28.7)*2.2)*.5+.5;const y=150+Math.sin(x*.035+t*5)*70*bk*env*Math.sin(Math.PI*x/900);d+=(x?'L':'M')+x+' '+y.toFixed(1);}
+    $('bpath').setAttribute('d',d);$('breath').style.opacity=t>28.6?1:0;$('bLab').style.opacity=bk;}
+  // E machine
+  if(scene('sE',t,30.6,42.15)){pop($('machine'),t,30.75,.6,{},{s:.9,y:50});stamp($('naoAt'),t,31.75,-5);
+    const spin=t>33.9?(t-33.9)*240:0;$('reel1').setAttribute('transform',`translate(130 80) rotate(${spin})`);$('reel2').setAttribute('transform',`translate(350 80) rotate(${spin*1.1})`);
+    $('rec').style.opacity=t>33.9?(Math.floor(t*2.5)%2?1:.2):.25;
+    const q='“Lúcia… não abre a porta.”';$('quote').textContent=typed(q,t,39.2,41.6);glitch($('quote'),t>40.5&&t<41.8&&hash(fr)>.6?1:0,t);}
+  // F corridor
+  if(scene('sF',t,42.0,47.2)){const k=eio(p(t,42.0,47.2));$('corr').style.transform=`translate(-50%,-50%) scale(${lerp(1,1.35,k)})`;
+    const op=eo(p(t,45.5,46.4));$('doorGap').setAttribute('width',8+op*70);$('floorLight').setAttribute('opacity',.12+op*.3);
+    $('corr').style.opacity=t>45.6&&t<46.0&&hash(fr)>.5?.4:1;}
+  // G report
+  if(scene('sG',t,47.0,55.75)){pop($('report'),t,47.15,.6,{r:1},{s:1.1,y:60});REP.forEach((f,i)=>{$('rv'+i).textContent=typed(f[1],t,f[2],f[2]+.6);});
+    stamp($('stampDes'),t,51.2,-9);pop($('bag'),t,52.45,.55,{r:-5},{s:1.3,y:-60,b:16});}
+  // H glitch
+  if(scene('sH',t,55.6,62.2)){let d='';const amp=t<60.8?40:0;for(let x=0;x<=960;x+=5){const y=150+(Math.sin(x*.05+t*14)*.6+hash(x+fr)*.8-.4)*amp*Math.sin(Math.PI*x/960);d+=(x?'L':'M')+x+' '+y.toFixed(1);}
+    $('wpath').setAttribute('d',d);$('wave').style.opacity=t<60.8?1:0;
+    $('hTxt').textContent=typed('a voz dizia outro nome…',t,57.9,60.1);$('hTxt').style.opacity=t<60.8?1:0;
+    const k=p(t,61.1,61.35);S($('oSeu'),{s:lerp(2.2,1,eo(k))*(1+.02*Math.sin(t*20)),a:k>0?1:0});glitch($('oSeu'),t>61.1?(hash(fr*.7)>.4?1:.2):0,t);}
+  // red flash moments
+  const fl=[[2.42,.25],[13.25,.15],[31.7,.15],[41.18,.25],[46.1,.2],[51.2,.2],[61.14,.45],[62.58,.15]];let fa=0;fl.forEach(([ft,g])=>{fa=Math.max(fa,g*(1-p(t,ft,ft+.35))*(t>=ft?1:0))});$('flash').style.opacity=fa;
+  // CTA
+  const ck=eo(p(t,65.3,65.8));$('cta').style.opacity=ck;$('cta').style.transform=`translate(-50%,-50%) scale(${lerp(.8,1,eback(p(t,65.3,65.8)))})`;$('next').style.opacity=eo(p(t,68.5,69));
+  $('bdot').style.opacity=Math.floor(t*1.5)%2?.3:1;
+  renderCaps(t);film(t,fr);
+  $('fade').style.opacity=1-eo(p(t,0,.35))+eio(p(t,END-.7,END));
+};
+window.setup=async function(){W=(await (await fetch('words.json')).json()).map(a=>({s:a[0],e:a[1],w:a[2]}));buildCaps();await document.fonts.ready;return true;};
+</script>
+</body>
+</html>
