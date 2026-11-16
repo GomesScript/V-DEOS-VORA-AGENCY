@@ -1,0 +1,9 @@
+Aula um: como instalar o Claude Code. Em poucos minutos, ele vai estar rodando no seu computador e no seu celular.
+Antes de tudo: você precisa de um plano pago do Claude, Pro ou Max. O plano gratuito não inclui o Claude Code.
+No computador, abra o terminal. No Mac ou no Linux, cole este comando e aperte enter. No Windows, abra o PowerShell e cole este aqui.
+Quando terminar, abra um terminal novo e digite: claude. Na primeira vez, ele abre o navegador pra você entrar na sua conta.
+Pronto! Agora é só pedir em português. Por exemplo: organiza as notas fiscais desta pasta numa planilha. E ele faz.
+Não curte terminal? Baixe o app do Claude em claude ponto ai, barra download, entre na sua conta e clique na aba Code.
+No celular, instale o app Claude na App Store ou no Google Play, entre com a mesma conta e toque em Code.
+E tem mais: digite barra remote control no computador, e você comanda a sessão do seu PC direto pelo celular.
+Salva essa aula e segue o arroba contadinho ponto b r, pra não perder a próxima.

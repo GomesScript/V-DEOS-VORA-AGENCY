@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Tutorial Claude Code</title>
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(../assets/fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:500;src:url(../assets/fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:600;src:url(../assets/fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:700;src:url(../assets/fonts/inter-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:800;src:url(../assets/fonts/inter-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-weight:900;src:url(../assets/fonts/inter-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:Mono;src:url(../assets/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+:root{--bg:#070a14;--card:#0e1322;--line:rgba(255,255,255,.09);--acc:#ff4d6d;--acc2:#ff8099;--mut:#7d869b}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+.c{position:absolute;transform:translate(-50%,-50%)}
+.scene{position:absolute;inset:0;display:none}
+.acc{color:var(--acc);text-shadow:0 0 30px rgba(255,77,109,.45)}
+.card{background:linear-gradient(170deg,#121829,#0b1020);border:2px solid var(--line);border-radius:28px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.glowc{border-color:rgba(255,77,109,.7);box-shadow:0 0 0 1px rgba(255,77,109,.3),0 0 50px rgba(255,77,109,.35),0 30px 70px rgba(0,0,0,.5)}
+.mono{font-family:Mono,monospace}
+.term{background:#0a0e1a;border:2px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.term .bar{height:62px;display:flex;align-items:center;gap:12px;padding:0 24px;border-bottom:2px solid var(--line);background:#0d1220}
+.dot{width:16px;height:16px;border-radius:50%}
+.term .body{padding:26px 30px;font-family:Mono,monospace;font-size:30px;line-height:1.55;color:#d7dceb;white-space:pre-wrap;word-break:break-all}
+.pill{display:inline-flex;align-items:center;gap:12px;border-radius:40px;padding:12px 26px;font-size:28px;font-weight:700;white-space:nowrap}
+.btn{background:var(--acc);color:#fff;box-shadow:0 0 40px rgba(255,77,109,.55)}
+.ok{color:#5ee08f}
+.caret{display:inline-block;width:16px;height:32px;background:var(--acc);vertical-align:-5px;margin-left:2px}
+#head{position:absolute;left:60px;right:60px;top:215px;text-align:center;font-size:78px;font-weight:900;letter-spacing:-2px;line-height:1.05}
+#handle{position:absolute;left:540px;top:160px;transform:translate(-50%,-50%);font-size:26px;font-weight:700;color:#cfd5e4;white-space:nowrap;display:flex;align-items:center;gap:10px}
+#cap{position:absolute;left:540px;top:1330px;transform:translate(-50%,-50%);max-width:960px;text-align:center;font-size:52px;font-weight:800;letter-spacing:-.5px;line-height:1.2;padding:16px 30px;border-radius:18px;background:rgba(20,24,38,.88);white-space:nowrap}
+#cap .w{display:inline-block;white-space:pre}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="stars" width="1080" height="1920" style="position:absolute;inset:0"></canvas>
+  <div class="c" id="glow" style="left:540px;top:780px;width:1300px;height:1100px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,77,109,.16),rgba(60,40,120,.10) 55%,rgba(0,0,0,0))"></div>
+
+  <!-- S1 devices -->
+  <div class="scene" id="s1">
+    <div class="c" id="laptop" style="left:470px;top:760px;width:700px">
+      <div class="term" style="border-radius:22px 22px 6px 6px;height:430px"><div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mono" style="margin-left:14px;font-size:22px;color:var(--acc)">● Claude Code</span></div>
+        <div class="body" style="font-size:26px"><span style="color:var(--acc)">✻</span> Welcome to <b>Claude Code</b>!
+
+<span style="color:var(--mut)">&gt;</span> <span id="l1t"></span><span class="caret" id="l1c"></span></div></div>
+      <div style="height:26px;margin:0 -50px;border-radius:0 0 30px 30px;background:linear-gradient(#1b2236,#0e1322);border:2px solid var(--line)"></div>
+    </div>
+    <div class="c" id="phone" style="left:860px;top:860px;width:250px;height:500px;border-radius:44px;background:#0a0e1a;border:3px solid #232b40;box-shadow:0 30px 60px rgba(0,0,0,.6);overflow:hidden">
+      <div style="margin:22px auto 0;width:90px;height:22px;border-radius:12px;background:#000"></div>
+      <div style="padding:26px 18px;font-size:19px;color:#cfd5e4">
+        <div style="font-weight:800;font-size:24px">Code</div>
+        <div style="margin-top:16px;padding:14px;border-radius:16px;background:#121829;border:1.5px solid var(--line)">Sessão do PC<div style="color:#5ee08f;font-size:16px;margin-top:6px">● ao vivo</div></div>
+        <div style="margin-top:12px;padding:14px;border-radius:16px;background:#121829;border:1.5px solid var(--line)">Planilha de notas<div style="color:var(--mut);font-size:16px;margin-top:6px">concluída ✓</div></div>
+      </div>
+      <div style="position:absolute;bottom:20px;left:18px;right:18px;height:54px;border-radius:27px;background:#121829;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:space-around;font-size:18px;font-weight:700"><span style="color:var(--mut)">Chat</span><span style="color:var(--acc)">Code</span></div>
+    </div>
+  </div>
+
+  <!-- S2 plans -->
+  <div class="scene" id="s2">
+    <div class="c card" id="info" style="left:540px;top:520px;width:900px;padding:30px 34px;display:flex;align-items:center;gap:24px">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;flex:none">i</div>
+      <div><div style="font-size:34px;font-weight:800">Precisa de plano pago.</div><div style="font-size:30px;font-weight:700" class="acc">Pro ou Max inclui o Claude Code.</div></div>
+    </div>
+    <div id="plans"></div>
+  </div>
+
+  <!-- S3 install terminal -->
+  <div class="scene" id="s3">
+    <div class="c" id="tabs" style="left:540px;top:520px;display:flex;gap:16px">
+      <div class="pill" id="tabA" style="font-size:26px">macOS · Linux</div>
+      <div class="pill" id="tabB" style="font-size:26px">Windows · PowerShell</div>
+    </div>
+    <div class="c term" id="t3" style="left:540px;top:860px;width:960px;height:520px">
+      <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mono" id="t3title" style="margin-left:14px;font-size:22px;color:var(--mut)">Terminal</span></div>
+      <div class="body" id="t3b"></div>
+    </div>
+  </div>
+
+  <!-- S4 claude + login -->
+  <div class="scene" id="s4">
+    <div class="c term" id="t4" style="left:540px;top:760px;width:960px;height:440px">
+      <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mono" style="margin-left:14px;font-size:22px;color:var(--mut)">Terminal</span></div>
+      <div class="body" id="t4b"></div>
+    </div>
+    <div class="c card" id="browser" style="left:640px;top:1030px;width:620px;border-radius:24px;overflow:hidden">
+      <div style="height:56px;background:#141a2b;display:flex;align-items:center;padding:0 20px;gap:12px;border-bottom:2px solid var(--line)"><span style="flex:1;height:34px;border-radius:17px;background:#0a0e1a;font-size:20px;color:var(--mut);display:flex;align-items:center;padding-left:18px" class="mono">claude.ai/login</span></div>
+      <div style="padding:34px;text-align:center"><div style="font-size:34px;font-weight:800">Entrar na sua conta</div>
+        <div class="pill btn" id="authBtn" style="margin-top:24px;font-size:28px">Autorizar Claude Code</div>
+        <div id="authOk" style="margin-top:18px;font-size:28px;font-weight:700" class="ok">✓ Login concluído</div></div>
+    </div>
+  </div>
+
+  <!-- S5 usage demo -->
+  <div class="scene" id="s5">
+    <div class="c term" id="t5" style="left:540px;top:720px;width:960px;height:500px">
+      <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mono" style="margin-left:14px;font-size:22px;color:var(--acc)">● Claude Code</span><span class="mono" style="margin-left:auto;font-size:20px;color:var(--mut)">~/notas-fiscais</span></div>
+      <div class="body" id="t5b"></div>
+    </div>
+    <div class="c card glowc" id="sheet" style="left:700px;top:1060px;width:560px;border-radius:22px;overflow:hidden">
+      <div style="padding:16px 22px;font-weight:800;font-size:26px;display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--line)"><span style="width:30px;height:30px;border-radius:7px;background:#1f9d55;display:inline-block"></span>notas-fiscais.xlsx</div>
+      <div id="rowsX" class="mono" style="font-size:20px"></div>
+    </div>
+    <div class="c pill" id="exTag" style="left:250px;top:1040px;background:#141a2b;border:2px solid var(--line);color:var(--mut);font-size:22px">exemplo</div>
+  </div>
+
+  <!-- S6 desktop app -->
+  <div class="scene" id="s6">
+    <div class="c pill" id="dl" style="left:540px;top:470px;background:#141a2b;border:2px solid rgba(255,77,109,.6);font-size:32px"><span class="mono acc">claude.ai/download</span></div>
+    <div class="c card" id="app" style="left:540px;top:880px;width:940px;height:600px;border-radius:26px;overflow:hidden">
+      <div style="height:56px;background:#0d1220;display:flex;align-items:center;gap:12px;padding:0 22px;border-bottom:2px solid var(--line)"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span style="margin-left:16px;font-size:22px;color:var(--mut);font-weight:600">Claude</span></div>
+      <div style="display:flex;height:544px">
+        <div style="width:250px;border-right:2px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:12px">
+          <div class="pill" id="tabChat" style="font-size:26px;color:var(--mut)">💬 Chat</div>
+          <div class="pill" id="tabCowork" style="font-size:26px;color:var(--mut)">▦ Cowork</div>
+          <div class="pill" id="tabCode" style="font-size:26px;color:var(--mut)">&lt;/&gt; Code</div>
+        </div>
+        <div style="flex:1;padding:34px" id="appMain">
+          <div id="appLogin" style="font-size:30px;font-weight:700;color:var(--mut)">Entre na sua conta…</div>
+          <div id="appCode" style="display:none">
+            <div style="font-size:34px;font-weight:800">O que vamos fazer hoje?</div>
+            <div style="margin-top:24px;height:110px;border-radius:20px;border:2px solid rgba(255,77,109,.5);background:#0a0e1a;padding:20px;font-size:24px;color:var(--mut)" class="mono">Descreva sua tarefa…</div>
+            <div style="margin-top:18px;display:flex;gap:12px"><span class="pill" style="background:#141a2b;font-size:20px;color:var(--mut)">📁 Pasta local</span><span class="pill" style="background:#141a2b;font-size:20px;color:var(--mut)">☁ Nuvem</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S7 phone install -->
+  <div class="scene" id="s7">
+    <div class="c" id="phone7" style="left:540px;top:830px;width:400px;height:800px;border-radius:64px;background:#0a0e1a;border:4px solid #232b40;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,77,109,.15);overflow:hidden">
+      <div style="margin:30px auto 0;width:130px;height:32px;border-radius:16px;background:#000"></div>
+      <div id="store" style="position:absolute;left:30px;right:30px;top:120px">
+        <div style="font-size:30px;font-weight:800">Claude</div><div style="font-size:20px;color:var(--mut);margin-top:6px">Anthropic</div>
+        <div class="pill btn" id="getBtn" style="margin-top:22px;font-size:24px;padding:10px 30px">Obter</div>
+        <div id="dlBar" style="margin-top:22px;height:10px;border-radius:5px;background:#1b2236;overflow:hidden"><div id="dlFill" style="height:100%;width:0;background:var(--acc)"></div></div>
+      </div>
+      <div id="appScr" style="position:absolute;inset:80px 26px 30px;opacity:0">
+        <div style="font-size:34px;font-weight:800">Code</div>
+        <div style="margin-top:20px;padding:20px;border-radius:20px;background:#121829;border:2px solid var(--line);font-size:24px">Nova tarefa<div style="font-size:18px;color:var(--mut);margin-top:6px">repositório · branch</div></div>
+        <div style="margin-top:14px;padding:20px;border-radius:20px;background:#121829;border:2px solid var(--line);font-size:24px">Sessões recentes<div style="font-size:18px;color:var(--mut);margin-top:6px">sincronizadas com o PC</div></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:80px;border-radius:40px;background:#121829;border:2px solid var(--line);display:flex;align-items:center;justify-content:space-around;font-size:24px;font-weight:800"><span style="color:var(--mut)">Chat</span><span id="mCode" style="padding:10px 26px;border-radius:30px">Code</span></div>
+      </div>
+    </div>
+    <div class="c pill" id="as" style="left:230px;top:1180px;background:#141a2b;border:2px solid var(--line);font-size:26px"> App Store</div>
+    <div class="c pill" id="gp" style="left:850px;top:1180px;background:#141a2b;border:2px solid var(--line);font-size:26px">▶ Google Play</div>
+  </div>
+
+  <!-- S8 remote control -->
+  <div class="scene" id="s8">
+    <div class="c term" id="t8" style="left:390px;top:700px;width:640px;height:420px">
+      <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mono" style="margin-left:14px;font-size:20px;color:var(--acc)">● Claude Code</span></div>
+      <div class="body" id="t8b" style="font-size:26px"></div>
+    </div>
+    <svg class="c" id="qr" style="left:390px;top:1060px" width="200" height="200" viewBox="0 0 25 25"></svg>
+    <div class="c" id="phone8" style="left:860px;top:900px;width:300px;height:600px;border-radius:50px;background:#0a0e1a;border:4px solid #232b40;box-shadow:0 30px 60px rgba(0,0,0,.6);overflow:hidden">
+      <div style="margin:24px auto 0;width:100px;height:26px;border-radius:13px;background:#000"></div>
+      <div style="padding:26px 20px;font-size:21px">
+        <div style="font-weight:800;font-size:28px">Code</div>
+        <div id="sessCard" style="margin-top:18px;padding:18px;border-radius:18px;background:#121829;border:2px solid rgba(255,77,109,.6)">Sessão do PC<div style="font-size:17px;margin-top:6px" class="ok">● ao vivo</div></div>
+        <div id="chatLine" style="margin-top:16px;padding:14px;border-radius:16px;background:var(--acc);font-size:19px;font-weight:600">Atualiza a planilha e me avisa</div>
+      </div>
+    </div>
+    <svg class="c" id="sync" style="left:650px;top:900px" width="120" height="60" viewBox="0 0 120 60"><path d="M10 30h90" stroke="#ff4d6d" stroke-width="5" stroke-dasharray="10 10" id="syncPath"/><path d="M90 15l18 15-18 15" fill="none" stroke="#ff4d6d" stroke-width="5"/></svg>
+  </div>
+
+  <!-- S9 CTA -->
+  <div class="scene" id="s9">
+    <div class="c card glowc" id="prof" style="left:540px;top:760px;width:760px;padding:40px;border-radius:32px;text-align:center">
+      <div style="width:150px;height:150px;border-radius:50%;margin:0 auto;background:linear-gradient(140deg,#ff4d6d,#7a2e5c);display:flex;align-items:center;justify-content:center;font-size:72px;font-weight:900">C</div>
+      <div style="font-size:46px;font-weight:900;margin-top:22px">@contadinho.br</div>
+      <div style="font-size:28px;color:var(--mut);margin-top:8px">Curso · Claude Code na prática</div>
+      <div class="pill btn" id="follow" style="margin-top:28px;font-size:34px;padding:16px 50px">Seguir</div>
+    </div>
+    <div class="c pill" id="save" style="left:540px;top:1080px;background:#141a2b;border:2px solid var(--line);font-size:28px">🔖 Salvar aula</div>
+    <div class="c pill" id="next" style="left:540px;top:1170px;background:#141a2b;border:2px solid var(--line);font-size:28px">Próxima: <span class="acc">Aula 2 →</span></div>
+  </div>
+
+  <div id="handle"><span style="width:12px;height:12px;border-radius:50%;background:var(--acc);display:inline-block;box-shadow:0 0 12px var(--acc)"></span>@contadinho.br</div>
+  <div id="head"></div>
+  <div id="cap"></div>
+  <div id="fade" style="position:absolute;inset:0;background:var(--bg);opacity:0"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eback=x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+function S(el,o={}){const {x=0,y=0,s=1,r=0,a=1,b=0}=o;el.style.transform=`translate(-50%,-50%) translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`;el.style.opacity=a;el.style.filter=b>.1?`blur(${b.toFixed(2)}px)`:'';}
+function pop(el,t,t0,dur=.45,base={},from={}){const k=p(t,t0,t0+dur);const f=eo(k);S(el,{...base,s:(base.s??1)*lerp(from.s??.7,1,eback(k)),y:(base.y??0)+lerp(from.y??40,0,f),a:(base.a??1)*f,b:(1-f)*(from.b??12)});return k;}
+function scene(id,t,a,b){const el=$(id);if(t<a||t>b){el.style.display='none';return false}el.style.display='block';
+  const pi=eo(p(t,a,a+.4)),po=eio(p(t,b-.35,b));el.style.opacity=pi*(1-po);el.style.transform=`scale(${lerp(.92,1,pi)*lerp(1,1.06,po)})`;
+  const bl=(1-pi)*14+po*14;el.style.filter=bl>.1?`blur(${bl}px)`:'';return true;}
+const typed=(s,t,a,b)=>s.slice(0,Math.round(s.length*p(t,a,b)));
+let W=[];const T=i=>W[i].s;
+const END=75.2;
+
+// headlines: [t, html]
+const HEAD=[[0,'Aula 1<br><span class="acc">Claude Code</span>'],[3.9,'No <span class="acc">computador</span><br>e no <span class="acc">celular</span>'],[8.5,'Antes de <span class="acc">tudo</span>'],
+ [16.0,'Abra o <span class="acc">terminal</span>'],[22.4,'No <span class="acc">Windows</span>:<br>PowerShell'],[25.9,'Digite <span class="acc mono">claude</span>'],[30.2,'Entre na sua <span class="acc">conta</span>'],
+ [34.3,'Agora é só <span class="acc">pedir</span>'],[42.9,'Prefere um <span class="acc">app</span>?'],[51.9,'No <span class="acc">celular</span>'],[59.8,'Controle pelo<br><span class="acc">celular</span>'],[67.9,'Salva essa <span class="acc">aula</span>']];
+let curH=-1;
+function renderHead(t){let i=-1;HEAD.forEach((h,k)=>{if(t>=h[0])i=k});const el=$('head');
+  if(i!==curH){curH=i;el.innerHTML=HEAD[i][1];}
+  const k=eo(p(t,HEAD[i][0],HEAD[i][0]+.4));const nx=HEAD[i+1];const ko=nx?eio(p(t,nx[0]-.2,nx[0])):0;
+  el.style.opacity=k*(1-ko);el.style.transform=`translateY(${(1-k)*30}px) scale(${lerp(.92,1,k)})`;el.style.filter=(1-k)*10+ko*10>.2?`blur(${(1-k)*10+ko*10}px)`:'';}
+
+// captions: display tokens from spoken words (merge spoken URL/handle forms)
+let TOK=[],CH=[];
+function buildCaps(){const M={1:['1',1],119:['claude.ai/download,',5],159:['/remote-control',3],181:['@contadinho.br,',5]};
+  for(let i=0;i<W.length;){if(M[i]){TOK.push({w:M[i][0],s:W[i].s});i+=M[i][1];}else{TOK.push({w:W[i].w,s:W[i].s});i++;}}
+  let cur=[];TOK.forEach((tk,i)=>{const prev=TOK[i-1];if(cur.length&&(cur.length>=4||/[.,:!?]$/.test(prev.w)||cur.map(x=>x.w).join(' ').length+tk.w.length>24)){CH.push(cur);cur=[];}cur.push(tk);});CH.push(cur);
+  CH.forEach((c,i)=>{c.t0=c[0].s-.08;c.t1=CH[i+1]?CH[i+1][0].s-.08:END-.6;});}
+let curC=-1;
+function renderCaps(t){const i=CH.findIndex(c=>t>=c.t0&&t<c.t1);const cap=$('cap');if(i<0){cap.style.opacity=0;return}
+  const c=CH[i];if(i!==curC){curC=i;cap.innerHTML=c.map(x=>`<span class="w">${x.w} </span>`).join('');}
+  const k=eo(p(t,c.t0,c.t0+.18));cap.style.opacity=k;cap.style.transform=`translate(-50%,-50%) scale(${lerp(.9,1,k)})`;
+  [...cap.children].forEach((sp,j)=>{const on=t>=c[j].s-.04;const cur=on&&(j==c.length-1||t<c[j+1].s-.04);
+    sp.style.color=on?(cur?'#ff4d6d':'#ffffff'):'#5c6478';sp.style.textShadow=cur?'0 0 24px rgba(255,77,109,.6)':'none';sp.style.transform=cur?'scale(1.06)':'none';});}
+
+// stars
+const sc=$('stars').getContext('2d');const ST=[];let sd=3;const rnd=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+for(let i=0;i<140;i++)ST.push({x:rnd()*1080,y:rnd()*1920,r:.6+rnd()*1.8,ph:rnd()*6.28,sp:4+rnd()*10});
+function stars(t){sc.clearRect(0,0,1080,1920);ST.forEach(s=>{const a=.15+.35*(.5+.5*Math.sin(t*1.5+s.ph));sc.fillStyle=`rgba(200,210,255,${a})`;sc.beginPath();sc.arc(s.x,(s.y-t*s.sp+1920)%1920,s.r,0,6.3);sc.fill();});}
+
+// static content
+const PL=[['Gratuito','sem Claude Code',13.47,0],['Pro','inclui Claude Code',12.03,1],['Max','inclui Claude Code',12.75,1]];
+$('plans').innerHTML=PL.map((q,i)=>`<div class="c card" id="pl${i}" style="left:${200+i*340}px;top:880px;width:300px;height:340px;padding:30px;text-align:center">
+ <div style="font-size:44px;font-weight:900">${q[0]}</div><div style="font-size:24px;color:var(--mut);margin-top:10px">${q[1]}</div>
+ <div id="plm${i}" style="margin:34px auto 0;width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;${q[3]?'background:var(--acc);box-shadow:0 0 40px rgba(255,77,109,.6)':'background:#1b2236;color:var(--mut)'}">${q[3]?'✓':'✕'}</div></div>`).join('');
+const RX=[['Data','Fornecedor','Valor'],['03/11','Papelaria Sol','R$ 184,90'],['05/11','Net Fibra','R$ 129,00'],['08/11','Posto Via','R$ 250,00'],['12/11','Gráfica Ideal','R$ 620,00']];
+$('rowsX').innerHTML=RX.map((r,i)=>`<div class="rx" style="display:grid;grid-template-columns:90px 1fr 150px;gap:10px;padding:10px 22px;border-bottom:1.5px solid var(--line);${i?'':'color:var(--mut)'}"><span>${r[0]}</span><span>${r[1]}</span><span style="text-align:right">${r[2]}</span></div>`).join('');
+(function qr(){const g=$('qr');let h='<rect width="25" height="25" fill="#fff" rx="1"/>';let s=11;const r=()=>{s=(s*16807)%2147483647;return s/2147483647};
+  for(let y=1;y<24;y++)for(let x=1;x<24;x++){const f=(x<8&&y<8)||(x>16&&y<8)||(x<8&&y>16);if(f)continue;if(r()>.5)h+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#0a0e1a"/>`;}
+  [[1,1],[17,1],[1,17]].forEach(([x,y])=>h+=`<rect x="${x}" y="${y}" width="7" height="7" fill="#0a0e1a"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#ff4d6d"/>`);g.innerHTML=h;})();
+
+const caret=(t)=>(Math.floor(t*2.2)%2)?'':'<span class="caret"></span>';
+window.render=function(t){
+  stars(t);$('glow').style.transform=`translate(-50%,-50%) scale(${1+.05*Math.sin(t*.8)})`;
+  // S1
+  if(scene('s1',t,-1,8.45)){pop($('laptop'),t,.1,.6,{},{s:.8,y:60});pop($('phone'),t,.45,.6,{r:6},{s:.6,y:80});
+    $('l1t').textContent=typed('instala o Claude Code',t,1.2,2.9);$('l1c').style.opacity=Math.floor(t*2.2)%2?0:1;
+    const g1=Math.sin(Math.PI*p(t,6.6,7.4)),g2=Math.sin(Math.PI*p(t,7.6,8.3));
+    $('laptop').firstElementChild.style.boxShadow=`0 30px 70px rgba(0,0,0,.55),0 0 ${70*g1}px rgba(255,77,109,${.6*g1})`;$('phone').style.boxShadow=`0 30px 60px rgba(0,0,0,.6),0 0 ${70*g2}px rgba(255,77,109,${.7*g2})`;
+    $('laptop').style.transform+=` scale(${1+.04*g1})`;$('phone').style.transform+=` scale(${1+.06*g2})`;}
+  // S2
+  if(scene('s2',t,8.4,16.0)){pop($('info'),t,9.6,.5,{},{s:.85,y:30});
+    PL.forEach((q,i)=>{const k=pop($('pl'+i),t,q[2]-.2,.5,{r:[-4,0,4][i]},{s:.6,y:60});if(q[3]){$('pl'+i).classList.toggle('glowc',t>q[2]);}else{$('pl'+i).style.opacity=String(Math.min(+$('pl'+i).style.opacity,t>14.5?.45:1));}});}
+  // S3
+  if(scene('s3',t,15.9,26.0)){const win=t>=22.44;pop($('tabs'),t,16.4,.45,{},{s:.8,y:20});pop($('t3'),t,16.6,.5,{},{s:.9,y:50});
+    $('tabA').style.background=win?'#141a2b':'var(--acc)';$('tabA').style.color=win?'var(--mut)':'#fff';$('tabB').style.background=win?'var(--acc)':'#141a2b';$('tabB').style.color=win?'#fff':'var(--mut)';
+    $('t3title').textContent=win?'Windows PowerShell':'Terminal';
+    if(!win){let s='<span style="color:var(--acc)">$</span> '+typed('curl -fsSL https://claude.ai/install.sh | bash',t,19.9,21.5);
+      if(t<21.72)s+=caret(t);else s+='\n\n<span style="color:var(--mut)">Baixando Claude Code…</span>'+(t>22.0?'\n<span class="ok">✓ Claude Code instalado</span>':'');$('t3b').innerHTML=s;}
+    else{let s='<span style="color:var(--mut)">PS C:\\Users\\voce&gt;</span> '+typed('irm https://claude.ai/install.ps1 | iex',t,24.6,25.6);$('t3b').innerHTML=s+caret(t);}}
+  // S4
+  if(scene('s4',t,25.85,34.35)){pop($('t4'),t,26.0,.5,{},{s:.9,y:50});
+    let s='<span style="color:var(--acc)">$</span> '+typed('claude',t,28.6,29.3);
+    if(t<29.6)s+=caret(t);else s+='\n\n<span style="color:var(--acc)">✻</span> Welcome to <b>Claude Code</b>!\n<span style="color:var(--mut)">Abrindo o navegador para login…</span>';$('t4b').innerHTML=s;
+    pop($('browser'),t,31.6,.55,{},{s:.7,y:60});const ab=Math.sin(Math.PI*p(t,33.1,33.35));$('authBtn').style.transform=`scale(${1-.08*ab})`;
+    $('authOk').style.opacity=eo(p(t,33.5,33.8));}
+  // S5
+  if(scene('s5',t,34.25,43.0)){pop($('t5'),t,34.4,.5,{},{s:.9,y:50});
+    let s='<span style="color:var(--acc)">&gt;</span> '+typed('organiza as notas fiscais desta pasta numa planilha',t,38.3,41.1);
+    if(t<41.3)s+=caret(t);else{s+='\n\n<span style="color:var(--mut)">● Lendo 4 notas fiscais…</span>';if(t>41.9)s+='\n<span class="ok">✓ notas-fiscais.xlsx criada</span>';}$('t5b').innerHTML=s;
+    pop($('sheet'),t,42.1,.5,{},{s:.6,y:60});[...document.querySelectorAll('.rx')].forEach((r,i)=>r.style.opacity=eo(p(t,42.2+i*.08,42.4+i*.08)));pop($('exTag'),t,37.4,.4,{},{s:.6,y:10});}
+  // S6
+  if(scene('s6',t,42.85,52.0)){pop($('dl'),t,45.6,.45,{},{s:.6,y:20});pop($('app'),t,44.3,.55,{},{s:.85,y:60});
+    const code=t>=50.97;['tabChat','tabCowork','tabCode'].forEach(id=>{const on=id=='tabCode'&&code;$(id).style.background=on?'var(--acc)':'transparent';$(id).style.color=on?'#fff':'var(--mut)';});
+    $('tabCode').style.transform=`scale(${1+.1*Math.sin(Math.PI*p(t,50.97,51.3))})`;
+    $('appLogin').textContent=t>=49.0?'✓ Conta conectada':'Entre na sua conta…';$('appLogin').style.color=t>=49?'#5ee08f':'var(--mut)';
+    $('appLogin').style.display=code?'none':'block';$('appCode').style.display=code?'block':'none';}
+  // S7
+  if(scene('s7',t,51.85,59.85)){pop($('phone7'),t,52.0,.55,{},{s:.8,y:80});pop($('as'),t,54.25,.4,{},{s:.5,y:20});pop($('gp'),t,55.6,.4,{},{s:.5,y:20});
+    $('dlFill').style.width=(100*eio(p(t,55.8,56.6)))+'%';const inApp=t>=56.7;$('store').style.opacity=inApp?0:1;$('appScr').style.opacity=eo(p(t,56.7,57.1));
+    const cd=t>=59.1;$('mCode').style.background=cd?'var(--acc)':'transparent';$('mCode').style.color=cd?'#fff':'var(--mut)';$('mCode').style.transform=`scale(${1+.12*Math.sin(Math.PI*p(t,59.1,59.45))})`;}
+  // S8
+  if(scene('s8',t,59.8,68.0)){pop($('t8'),t,60.0,.5,{},{s:.9,y:50});
+    let s='<span style="color:var(--acc)">&gt;</span> '+typed('/remote-control',t,61.5,62.6);if(t<62.9)s+=caret(t);else s+='\n\n<span class="ok">✓ Remote Control ativo</span>\n<span style="color:var(--mut)">Escaneie o QR code no celular</span>';$('t8b').innerHTML=s;
+    pop($('qr'),t,63.0,.45,{},{s:.5,y:20});pop($('phone8'),t,63.6,.55,{r:4},{s:.7,y:80});pop($('sync'),t,64.0,.4,{},{s:.5,y:0});$('syncPath').setAttribute('stroke-dashoffset',-t*60);
+    pop($('chatLine'),t,65.6,.4,{c:false},{s:.8,y:10});$('chatLine').style.transform=$('chatLine').style.transform.replace('translate(-50%, -50%) ','').replace('translate(-50%,-50%) ','');}
+  // S9
+  if(scene('s9',t,67.85,END+1)){pop($('prof'),t,68.0,.55,{},{s:.8,y:60});pop($('save'),t,68.4,.45,{},{s:.6,y:20});pop($('next'),t,72.5,.45,{},{s:.6,y:20});
+    const f=t>=69.33;const fp=Math.sin(Math.PI*p(t,69.33,69.6));$('follow').textContent=f?'Seguindo ✓':'Seguir';$('follow').style.transform=`scale(${1-.08*fp+.03*Math.sin(t*4)*(f?0:1)})`;
+    $('follow').style.background=f?'#1b2236':'var(--acc)';}
+  renderHead(t);renderCaps(t);
+  $('handle').style.opacity=eo(p(t,0,.4));$('fade').style.opacity=eio(p(t,END-.5,END));
+};
+window.setup=async function(){W=(await (await fetch('words.json')).json()).map(a=>({s:a[0],e:a[1],w:a[2]}));buildCaps();await document.fonts.ready;return true;};
+</script>
+</body>
+</html>
