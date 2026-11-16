@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>A Vida do Beto - EP 1</title>
+<style>
+@font-face{font-family:Baloo;font-weight:500;src:url(../assets/fonts/baloo-2-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Baloo;font-weight:600;src:url(../assets/fonts/baloo-2-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Baloo;font-weight:700;src:url(../assets/fonts/baloo-2-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Baloo;font-weight:800;src:url(../assets/fonts/baloo-2-latin-800-normal.woff2) format('woff2')}
+:root{--ink:#2b2340;--yel:#ffc93c;--cor:#ff6b6b;--tea:#00c2a8;--sky:#74b9ff;--pur:#6c5ce7;--cream:#fff6e6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;font-family:Baloo,sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden;background:#222}
+.c{position:absolute;transform:translate(-50%,-50%)}
+.scene{position:absolute;inset:0;display:none;overflow:hidden}
+.ol{-webkit-text-stroke:0;paint-order:stroke fill;stroke:var(--ink)}
+.card{background:#fff;border:6px solid var(--ink);border-radius:34px;box-shadow:10px 12px 0 var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:5px solid var(--ink);border-radius:30px;padding:4px 18px;font-size:34px;font-weight:800;box-shadow:5px 6px 0 var(--ink);white-space:nowrap}
+.big{font-weight:800;color:#fff;-webkit-text-stroke:14px var(--ink);paint-order:stroke fill;text-shadow:8px 10px 0 var(--ink);white-space:nowrap;line-height:1}
+#cap{position:absolute;left:50px;right:50px;top:1610px;text-align:center;font-size:76px;font-weight:800;line-height:1.05;color:#fff;-webkit-text-stroke:14px var(--ink);paint-order:stroke fill;text-shadow:6px 8px 0 var(--ink)}
+#cap b{color:var(--yel)}
+.bubble{background:#fff;border:6px solid var(--ink);border-radius:40px;padding:22px 34px;font-size:44px;font-weight:800;box-shadow:8px 10px 0 var(--ink);white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1 bus -->
+  <div class="scene" id="s1" style="background:linear-gradient(#00c2a8,#00a08a)">
+    <div style="position:absolute;left:0;right:0;top:330px;height:470px;background:#bfe9ff;border-top:10px solid var(--ink);border-bottom:10px solid var(--ink);overflow:hidden">
+      <div id="city" style="position:absolute;left:0;top:0;height:100%;width:4000px"></div>
+      <div style="position:absolute;inset:0;display:flex;justify-content:space-around">
+        <div style="width:22px;background:var(--ink)"></div><div style="width:22px;background:var(--ink)"></div><div style="width:22px;background:var(--ink)"></div>
+      </div>
+    </div>
+    <div style="position:absolute;left:0;right:0;top:800px;bottom:0;background:#2e86de"></div>
+    <div style="position:absolute;left:-20px;right:-20px;top:1220px;bottom:0;background:#576574;border-top:10px solid var(--ink)"></div>
+    <div class="c" style="left:540px;top:1030px;width:760px;height:420px;border-radius:60px 60px 20px 20px;background:#ff9f43;border:10px solid var(--ink)"></div>
+    <div class="c" id="b1" style="left:540px;top:980px;width:620px"></div>
+    <div class="c" style="left:540px;top:1210px;width:880px;height:120px;border-radius:30px;background:#ff9f43;border:10px solid var(--ink)"></div>
+    <div class="c" id="wallet" style="left:800px;top:1390px;width:200px;height:130px;border-radius:24px;background:#8d5a2b;border:8px solid var(--ink);box-shadow:8px 8px 0 var(--ink)">
+      <div style="position:absolute;left:-8px;right:-8px;top:40px;height:14px;background:#6b3f1a;border-top:6px solid var(--ink)"></div>
+      <div style="position:absolute;right:20px;top:-26px;width:110px;height:50px;background:#7bed9f;border:6px solid var(--ink);border-radius:8px;transform:rotate(-12deg);font-size:28px;font-weight:800;text-align:center;line-height:38px">100</div>
+    </div>
+    <div class="c" id="spark" style="left:860px;top:1310px;font-size:90px">✨</div>
+  </div>
+
+  <!-- S2 meet Beto -->
+  <div class="scene" id="s2" style="background:#6c5ce7">
+    <div id="confetti"></div>
+    <div class="c" id="b2" style="left:540px;top:930px;width:700px"></div>
+    <div class="c card" id="nameCard" style="left:540px;top:1270px;width:720px;padding:22px 34px;text-align:center;transform:translate(-50%,-50%) rotate(-3deg)">
+      <div style="font-size:72px;font-weight:800;line-height:1">BETO, 27</div>
+      <div style="font-size:36px;font-weight:600;color:#6c5ce7">desastrado profissional · sem grana · gente boa</div>
+    </div>
+  </div>
+
+  <!-- S3 context phone -->
+  <div class="scene" id="s3" style="background:#ff6b6b">
+    <div id="dots3" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.25) 6px,transparent 7px);background-size:70px 70px"></div>
+    <div class="c" id="phone" style="left:620px;top:900px;width:520px;height:900px;border-radius:70px;background:var(--ink);padding:28px;transform:translate(-50%,-50%) rotate(6deg)">
+      <div style="width:100%;height:100%;border-radius:50px;background:#f5f0ff;padding:90px 26px 26px;position:relative">
+        <div style="position:absolute;top:30px;left:50%;transform:translateX(-50%);font-size:40px;font-weight:800">23:47</div>
+        <div id="notifs"></div>
+      </div>
+    </div>
+    <div class="c" id="b3" style="left:250px;top:1180px;width:460px"></div>
+  </div>
+
+  <!-- S4 wallet open -->
+  <div class="scene" id="s4" style="background:#ffc93c">
+    <div style="position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 50% 45%,rgba(255,255,255,.18) 0 10deg,transparent 10deg 20deg)" id="rays"></div>
+    <div class="c" id="openW" style="left:540px;top:820px;width:860px;height:560px;border-radius:40px;background:#8d5a2b;border:10px solid var(--ink);box-shadow:14px 16px 0 var(--ink)">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:10px;background:var(--ink)"></div>
+      <div id="bills" style="position:absolute;left:40px;top:-140px;width:380px;height:300px"></div>
+      <div class="card" id="rg" style="position:absolute;right:30px;top:60px;width:370px;height:240px;border-radius:20px;padding:18px;box-shadow:6px 7px 0 var(--ink);background:#dff9fb">
+        <div style="font-size:24px;font-weight:800;color:#576574">REGISTRO GERAL</div>
+        <div style="display:flex;gap:16px;margin-top:10px;align-items:center">
+          <svg width="110" height="130" viewBox="0 0 110 130"><rect width="110" height="130" rx="10" fill="#c8d6e5" stroke="#2b2340" stroke-width="5"/><circle cx="55" cy="60" r="32" fill="#e0b48f" stroke="#2b2340" stroke-width="4"/><path d="M25 50 Q55 15 85 50" fill="#dfe6e9" stroke="#2b2340" stroke-width="4"/><circle cx="43" cy="62" r="9" fill="none" stroke="#2b2340" stroke-width="3"/><circle cx="67" cy="62" r="9" fill="none" stroke="#2b2340" stroke-width="3"/><path d="M44 80 Q55 88 66 80" fill="none" stroke="#2b2340" stroke-width="3"/><path d="M15 130 Q55 95 95 130" fill="#576574"/></svg>
+          <div><div style="font-size:36px;font-weight:800;line-height:1">Ademar</div><div style="font-size:28px;font-weight:600">71 anos</div></div>
+        </div>
+      </div>
+      <div class="card" id="pic" style="position:absolute;right:120px;top:330px;width:250px;height:190px;border-radius:16px;padding:10px;transform:rotate(7deg);box-shadow:6px 7px 0 var(--ink)">
+        <div style="width:100%;height:120px;border-radius:8px;background:linear-gradient(#74b9ff,#a29bfe);display:flex;align-items:flex-end;justify-content:center;gap:10px;padding-bottom:6px;font-size:54px">🧒👧</div>
+        <div style="font-size:26px;font-weight:800;text-align:center">netos ❤️</div>
+      </div>
+    </div>
+    <div class="c" id="b4" style="left:250px;top:1270px;width:440px"></div>
+  </div>
+
+  <!-- S5 angel vs devil -->
+  <div class="scene" id="s5">
+    <div style="position:absolute;left:0;top:0;width:50%;height:100%;background:#74b9ff"></div>
+    <div style="position:absolute;right:0;top:0;width:50%;height:100%;background:#ff6b6b"></div>
+    <div class="c big" id="vs" style="left:540px;top:420px;font-size:150px">VS</div>
+    <div class="c" id="angel" style="left:240px;top:640px;width:300px"></div>
+    <div class="c" id="devil" style="left:840px;top:640px;width:300px"></div>
+    <div class="c bubble" id="bubA" style="left:270px;top:900px;font-size:40px">"Devolve, Beto! 😇"</div>
+    <div class="c bubble" id="bubD" style="left:810px;top:900px;font-size:40px">"Ninguém vai saber 😈"</div>
+    <div class="c" id="b5" style="left:540px;top:1240px;width:560px"></div>
+  </div>
+
+  <!-- S6 choice -->
+  <div class="scene" id="s6" style="background:radial-gradient(circle at 50% 40%,#8e7cff,#4b3bb8)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.18) 5px,transparent 6px);background-size:60px 60px"></div>
+    <div class="c big" id="agora" style="left:540px;top:430px;font-size:150px">E AGORA?</div>
+    <div class="c" id="optA" style="left:540px;top:720px;width:920px;height:250px;border-radius:44px;background:#00c2a8;border:9px solid var(--ink);box-shadow:12px 14px 0 var(--ink);display:flex;align-items:center;gap:30px;padding:0 40px">
+      <div style="width:150px;height:150px;border-radius:40px;background:#fff;border:8px solid var(--ink);font-size:110px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;line-height:1">A</div>
+      <div><div style="font-size:52px;font-weight:800;color:#fff;-webkit-text-stroke:9px var(--ink);paint-order:stroke fill;line-height:1.05">Devolve tudo pro<br>Seu Ademar</div><div style="margin-top:8px;font-size:32px;font-weight:800">⭐ +2 · 💰 +0</div></div>
+    </div>
+    <div class="c" id="optB" style="left:540px;top:1030px;width:920px;height:250px;border-radius:44px;background:#ff6b6b;border:9px solid var(--ink);box-shadow:12px 14px 0 var(--ink);display:flex;align-items:center;gap:30px;padding:0 40px">
+      <div style="width:150px;height:150px;border-radius:40px;background:#fff;border:8px solid var(--ink);font-size:110px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;line-height:1">B</div>
+      <div><div style="font-size:52px;font-weight:800;color:#fff;-webkit-text-stroke:9px var(--ink);paint-order:stroke fill;line-height:1.05">Fica com R$ 50 de<br>"recompensa"</div><div style="margin-top:8px;font-size:32px;font-weight:800">💰 +50 · ⭐ −1</div></div>
+    </div>
+    <div class="c card" id="vote" style="left:540px;top:1290px;padding:16px 40px;font-size:50px;font-weight:800;white-space:nowrap;background:var(--yel)">COMENTA A OU B 👇</div>
+    <div class="c" id="timer" style="left:540px;top:1395px;width:700px;height:34px;border-radius:17px;background:#fff;border:6px solid var(--ink);overflow:hidden"><div id="tfill" style="height:100%;width:100%;background:var(--cor)"></div></div>
+    <div class="c" id="b6" style="left:150px;top:1300px;width:250px"></div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" style="position:absolute;left:0;right:0;top:0;height:300px">
+    <div class="c" style="left:540px;top:110px;font-size:46px;font-weight:800;white-space:nowrap;color:#fff;-webkit-text-stroke:10px var(--ink);paint-order:stroke fill;letter-spacing:2px">A VIDA DO <span style="color:var(--yel)">BETO</span></div>
+    <div class="c chip" style="left:150px;top:200px;background:var(--yel)">EP. 1</div>
+    <div class="c" style="left:620px;top:200px;display:flex;gap:14px">
+      <div class="chip" id="stM">💰 <span id="vM">23</span></div><div class="chip" id="stH">😊 <span id="vH">6</span></div><div class="chip" id="stR">⭐ <span id="vR">7</span></div>
+    </div>
+  </div>
+  <div id="cap"></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const lerp=(a,b,x)=>a+(b-a)*x;
+const eo=x=>1-Math.pow(1-x,3);
+const eback=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+function S(el,o={}){const {x=0,y=0,s=1,r=0,a=1}=o;el.style.transform=`translate(-50%,-50%) translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`;el.style.opacity=a;}
+function pop(el,t,t0,base={},dur=.45){const k=p(t,t0,t0+dur);S(el,{...base,s:(base.s??1)*lerp(.3,1,eback(k)),a:(base.a??1)*eo(k)});return k;}
+function scene(id,t,a,b){const el=$(id);el.style.display=(t>=a&&t<b)?'block':'none';return t>=a&&t<b;}
+
+// ---------- Beto (SVG) ----------
+const INK='#2b2340',SKIN='#c68a62',HAIR='#3b2418';
+function beto(o={}){const {e='smile',wave=0,dollar=false,sweat=false,hand=false}=o;
+  const eyesWhite=`<ellipse cx="162" cy="252" rx="24" ry="28" fill="#fff" stroke="${INK}" stroke-width="5"/><ellipse cx="238" cy="252" rx="24" ry="28" fill="#fff" stroke="${INK}" stroke-width="5"/>`;
+  const pup={smile:[0,4,11],shock:[0,0,7],worry:[-4,6,10],grin:[2,2,11],think:[8,-8,10],side:[10,4,11]}[e]||[0,4,11];
+  let pupils=dollar?`<text x="162" y="268" text-anchor="middle" font-size="44" font-weight="800" fill="#1e9e57" font-family="Baloo">$</text><text x="238" y="268" text-anchor="middle" font-size="44" font-weight="800" fill="#1e9e57" font-family="Baloo">$</text>`
+    :`<circle cx="${162+pup[0]}" cy="${252+pup[1]}" r="${pup[2]}" fill="${INK}"/><circle cx="${238+pup[0]}" cy="${252+pup[1]}" r="${pup[2]}" fill="${INK}"/><circle cx="${166+pup[0]}" cy="${247+pup[1]}" r="3.5" fill="#fff"/><circle cx="${242+pup[0]}" cy="${247+pup[1]}" r="3.5" fill="#fff"/>`;
+  const brows={smile:'M138 215 Q162 202 184 214 M216 214 Q238 202 262 215',shock:'M138 200 Q162 184 184 198 M216 198 Q238 184 262 200',worry:'M140 210 Q162 214 182 202 M218 202 Q238 214 260 210',
+    grin:'M138 212 Q162 198 184 210 M216 210 Q238 198 262 212',think:'M140 212 Q162 205 184 212 M216 204 Q238 194 262 206',side:'M138 214 Q162 204 184 214 M216 214 Q238 204 262 214'}[e];
+  const mouth={smile:'<path d="M168 318 Q200 345 232 318" fill="none" stroke="'+INK+'" stroke-width="7" stroke-linecap="round"/>',
+    shock:'<ellipse cx="200" cy="328" rx="20" ry="26" fill="#7a2335" stroke="'+INK+'" stroke-width="6"/>',
+    worry:'<path d="M170 330 Q185 318 200 330 Q215 342 230 330" fill="none" stroke="'+INK+'" stroke-width="7" stroke-linecap="round"/>',
+    grin:'<path d="M160 310 Q200 365 240 310 Z" fill="#7a2335" stroke="'+INK+'" stroke-width="6" stroke-linejoin="round"/><path d="M168 314 L232 314 L226 326 L174 326 Z" fill="#fff"/>',
+    think:'<path d="M180 326 L222 320" stroke="'+INK+'" stroke-width="7" stroke-linecap="round"/>',
+    side:'<path d="M172 320 Q205 338 230 316" fill="none" stroke="'+INK+'" stroke-width="7" stroke-linecap="round"/>'}[e];
+  const hairC=[[120,190,38],[150,160,42],[195,148,46],[240,158,42],[280,188,38],[300,225,28],[100,225,28],[170,140,30],[222,138,32]].map(c=>`<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="${HAIR}" stroke="${INK}" stroke-width="5"/>`).join('');
+  const arm=wave?`<g transform="rotate(${wave} 330 430)"><path d="M300 420 Q360 380 372 300" fill="none" stroke="#ffc93c" stroke-width="58" stroke-linecap="round"/><path d="M300 420 Q360 380 372 300" fill="none" stroke="${INK}" stroke-width="70" stroke-linecap="round" style="mix-blend-mode:normal" opacity="0"/><circle cx="374" cy="280" r="34" fill="${SKIN}" stroke="${INK}" stroke-width="6"/></g>`:'';
+  const chin=hand?`<circle cx="230" cy="372" r="30" fill="${SKIN}" stroke="${INK}" stroke-width="6"/>`:'';
+  return `<svg viewBox="0 0 400 540" width="100%" style="overflow:visible;display:block">
+   <path d="M56 540 C56 430 110 386 200 386 C290 386 344 430 344 540 Z" fill="#ffc93c" stroke="${INK}" stroke-width="7"/>
+   <path d="M120 400 Q200 440 280 400 L270 392 Q200 420 130 392 Z" fill="#f0a91e" stroke="${INK}" stroke-width="5"/>
+   <path d="M95 450 Q110 500 110 540" stroke="#0984e3" stroke-width="30" fill="none"/><path d="M95 450 Q110 500 110 540" stroke="${INK}" stroke-width="5" fill="none" transform="translate(-16 0)"/>
+   <line x1="182" y1="420" x2="178" y2="480" stroke="#fff" stroke-width="6" stroke-linecap="round"/><line x1="218" y1="420" x2="222" y2="480" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+   <rect x="176" y="340" width="48" height="60" fill="${SKIN}" stroke="${INK}" stroke-width="5"/>
+   <path d="M120 372 Q200 420 280 372" fill="none" stroke="#00c2a8" stroke-width="16" stroke-linecap="round"/><rect x="104" y="350" width="34" height="46" rx="12" fill="#00c2a8" stroke="${INK}" stroke-width="5"/><rect x="262" y="350" width="34" height="46" rx="12" fill="#00c2a8" stroke="${INK}" stroke-width="5"/>
+   <circle cx="94" cy="262" r="22" fill="${SKIN}" stroke="${INK}" stroke-width="5"/><circle cx="306" cy="262" r="22" fill="${SKIN}" stroke="${INK}" stroke-width="5"/>
+   <ellipse cx="200" cy="258" rx="108" ry="116" fill="${SKIN}" stroke="${INK}" stroke-width="7"/>
+   ${hairC}
+   <circle cx="138" cy="300" r="16" fill="#ff7675" opacity=".45"/><circle cx="262" cy="300" r="16" fill="#ff7675" opacity=".45"/>
+   ${eyesWhite}${pupils}
+   <path d="${brows}" fill="none" stroke="${HAIR}" stroke-width="9" stroke-linecap="round"/>
+   <path d="M196 276 Q188 296 202 298" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
+   ${mouth}${chin}
+   ${sweat?`<path d="M300 190 Q316 220 300 232 Q284 220 300 190 Z" fill="#74b9ff" stroke="${INK}" stroke-width="4"/>`:''}
+   ${arm}</svg>`;}
+function mini(kind){const halo=kind=='angel'?`<ellipse cx="200" cy="105" rx="70" ry="18" fill="none" stroke="#ffd32a" stroke-width="14"/>`:`<path d="M120 160 L105 80 L160 140 Z M280 160 L295 80 L240 140 Z" fill="#d63031" stroke="${INK}" stroke-width="6"/>`;
+  const wing=kind=='angel'?`<path d="M90 380 Q-20 300 40 220 Q80 300 140 330 Z M310 380 Q420 300 360 220 Q320 300 260 330 Z" fill="#fff" stroke="${INK}" stroke-width="6"/>`:`<path d="M300 480 Q400 470 380 380 L400 360 L360 360 L372 384 Q385 445 300 455 Z" fill="#d63031" stroke="${INK}" stroke-width="5"/>`;
+  const svg=beto({e:kind=='angel'?'smile':'grin'}).replace('<svg viewBox="0 0 400 540" width="100%" style="overflow:visible;display:block">',`<svg viewBox="0 0 400 540" width="100%" style="overflow:visible;display:block">${wing}`).replace('</svg>',halo+'</svg>');
+  return kind=='angel'?svg:svg.replace(/#ffc93c/g,'#d63031').replace(/#f0a91e/g,'#a61e1e');}
+
+// static builds
+let city='';for(let i=0;i<40;i++){const w=60+(i*37%80),h=120+(i*53%220);city+=`<div style="position:absolute;left:${i*100}px;bottom:0;width:${w}px;height:${h}px;background:${['#a29bfe','#81ecec','#fab1a0','#ffeaa7','#74b9ff'][i%5]};border:6px solid #2b2340;border-bottom:none"></div>`;}$('city').innerHTML=city;
+let cf='';for(let i=0;i<40;i++){cf+=`<div class="cf" style="position:absolute;left:${(i*97)%1080}px;top:${(i*223)%1920}px;width:${18+(i%3)*8}px;height:${30+(i%4)*6}px;border-radius:6px;background:${['#ffc93c','#00c2a8','#ff6b6b','#74b9ff','#fff'][i%5]};border:4px solid #2b2340;transform:rotate(${i*41}deg)"></div>`;}$('confetti').innerHTML=cf;
+const NT=[['🏠','Aluguel','venceu ontem 😬'],['💳','Saldo','R$ 23,40'],['📅','Salário','só daqui 5 dias']];
+$('notifs').innerHTML=NT.map((n,i)=>`<div id="nt${i}" style="display:flex;gap:18px;align-items:center;background:#fff;border:5px solid #2b2340;border-radius:28px;padding:18px 20px;margin-bottom:22px;box-shadow:5px 6px 0 #2b2340"><div style="font-size:56px">${n[0]}</div><div><div style="font-size:34px;font-weight:800;line-height:1">${n[1]}</div><div style="font-size:30px;font-weight:600;color:#d63031">${n[2]}</div></div></div>`).join('');
+$('bills').innerHTML=[0,1,2,3,4].map(i=>`<div class="bill" style="position:absolute;left:${40+i*40}px;top:${30+Math.abs(i-2)*14}px;width:230px;height:120px;background:#7bed9f;border:7px solid #2b2340;border-radius:14px;transform-origin:50% 150%;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center">R$ 100</div>`).join('');
+
+const CAPS=[[0,'O Beto achou <b>R$ 500</b><br>no ônibus.'],[4,'Esse é o <b>Beto</b>.'],[8,'Faltavam <b>5 dias</b><br>pro salário…'],[13,'R$ 500… e o RG do<br><b>Seu Ademar, 71</b>.'],[19,'A cabeça do Beto virou<br>um <b>tribunal</b>.'],[25,'Você decide o que<br>o Beto faz!']];
+const STAT=[[0,23,6,7],[8,23,3,7],[13,23,3,7],[25,23,4,7]];
+
+window.render=function(t){
+  // S1 bus
+  if(scene('s1',t,0,4)){$('city').style.transform=`translateX(${-(t*300)%2000}px)`;
+    $('b1').innerHTML=beto({e:t<1.2?'side':'shock',dollar:false});pop($('b1'),t,0,{y:Math.sin(t*14)*3});
+    pop($('wallet'),t,.6,{r:-8,s:1.45});const sp=.6+.4*Math.abs(Math.sin(t*5));S($('spark'),{s:sp,a:t>.8?1:0});}
+  // S2
+  if(scene('s2',t,4,8)){document.querySelectorAll('.cf').forEach((c,i)=>{c.style.marginTop=((t*80*(1+i%3))%400)+'px'});
+    $('b2').innerHTML=beto({e:'grin',wave:Math.sin(t*8)*12+1});pop($('b2'),t,4);pop($('nameCard'),t,4.6,{r:-3});}
+  // S3
+  if(scene('s3',t,8,13)){pop($('phone'),t,8.1,{r:6});NT.forEach((n,i)=>{const el=$('nt'+i);const k=p(t,8.7+i*.7,9.1+i*.7);el.style.opacity=eo(k);el.style.transform=`translateX(${(1-eo(k))*200}px)`;});
+    $('b3').innerHTML=beto({e:'worry',sweat:true});pop($('b3'),t,8.3,{r:-4,y:Math.sin(t*3)*6});}
+  // S4
+  if(scene('s4',t,13,19)){$('rays').style.transform=`rotate(${t*8}deg) scale(2)`;pop($('openW'),t,13.1);
+    document.querySelectorAll('.bill').forEach((b,i)=>{const k=eo(p(t,13.5+i*.12,13.9+i*.12));b.style.transform=`rotate(${lerp(0,(i-2)*14,k)}deg) translateY(${(1-k)*60}px)`;b.style.opacity=k;});
+    pop($('rg'),t,14.6,{},.4);pop($('pic'),t,15.6,{r:7},.4);$('b4').innerHTML=beto({e:t<16?'grin':'worry',dollar:t<16,sweat:t>=16});pop($('b4'),t,13.4,{r:6});}
+  // S5
+  if(scene('s5',t,19,25)){pop($('vs'),t,19.1,{r:Math.sin(t*6)*4});$('angel').innerHTML=mini('angel');$('devil').innerHTML=mini('devil');
+    pop($('angel'),t,19.4,{y:Math.sin(t*3)*14,r:-6});pop($('devil'),t,19.8,{y:Math.cos(t*3)*14,r:6});pop($('bubA'),t,20.6,{r:-3});pop($('bubD'),t,21.6,{r:3});
+    $('b5').innerHTML=beto({e:'think',hand:true});pop($('b5'),t,19.2);}
+  // S6
+  if(scene('s6',t,25,40)){pop($('agora'),t,25.1,{r:Math.sin(t*5)*3});pop($('optA'),t,25.6,{r:-1.5});pop($('optB'),t,26.0,{r:1.5});pop($('vote'),t,26.6,{s:1+.04*Math.sin(t*6)});
+    S($('timer'),{a:eo(p(t,26.8,27.1))});$('tfill').style.width=(100*(1-p(t,27,40)))+'%';$('b6').innerHTML=beto({e:'shock'});pop($('b6'),t,26.9,{r:-8});}
+  // HUD stats
+  let st=STAT[0];STAT.forEach(s=>{if(t>=s[0])st=s});$('vM').textContent=st[1];$('vH').textContent=st[2];$('vR').textContent=st[3];
+  $('stH').style.background=t>=8&&t<9?'#ff7675':'#fff';
+  // captions
+  let c=CAPS[0];CAPS.forEach(x=>{if(t>=x[0])c=x});$('cap').innerHTML=c[1];const k=p(t,c[0],c[0]+.35);$('cap').style.transform=`scale(${lerp(.6,1,eback(k))})`;
+};
+window.setup=async function(){await document.fonts.ready;return true;};
+</script>
+</body>
+</html>
